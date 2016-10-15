@@ -1,0 +1,9 @@
+== README
+
+Open terminal and run command
+* bundle
+* rake db:migrate
+
+Rails : 4.2.6
+Ruby  : 2.3
+Sqlite3
