@@ -32,7 +32,7 @@
                       <h3><%= @user.username %></h3>
 
                       <ul class="list-unstyled user_data">
-                        <% if @user.fullname != '' %>
+                        <% if @user.fullname != '' && !@user.fullname.nil? %>
                           <li>
                             <i class="fa fa-user user-profile-icon"></i> <%= @user.fullname %>
                           </li>
@@ -43,7 +43,7 @@
                             <a href="#"><%= @user.email %></a>
                           </li>
                         <% end %>
-                        <% if @user.address != ''%>
+                        <% if @user.address != '' && !@user.address.nil? %>
                           <li>
                             <i class="fa fa-map-marker user-profile-icon"></i> <%= @user.address %>
                           </li>
