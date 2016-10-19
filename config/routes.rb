@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'front_end#index'
 
   namespace :admin do
+    resources :books
     resources :categories, path: 'categories'
     resources :tags, path: 'tags'
     resources :posts, path: 'posts'
