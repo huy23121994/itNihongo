@@ -1,0 +1,65 @@
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  	<div class="modal-dialog modal-lg" role="document">
+    	<div class="modal-content">
+    		<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Add new book</h4>
+		    </div>
+		    <div class="modal-body">
+		    	<div class="row">
+		    		<form>
+			    		<div class="col-sm-4">
+					        <img src="<%= image_path("chuyenketrangnghe.jpg") %>" class="full_width book_img">
+				        </div>
+			    		<div class="col-sm-8">
+			    			<div class="form-group">
+							    <label for="book_title">Title</label>
+							    <input type="text" class="form-control" id="book_title" name="title" placeholder="Title">
+							</div>
+			    			<div class="form-group">
+							    <label for="book_author">Athor</label>
+							    <input type="text" class="form-control" id="book_author" name="author" placeholder="Athor">
+							</div>	
+			    			<div class="form-group">
+							    <label for="book_description">Description</label>
+							    <textarea class="form-control" id="book_description" name="description" placeholder="Description" rows="8"></textarea>
+							</div>
+			    			<div class="form-group">
+							    <label for="book_img">Bookjacket</label>
+							    <input type="file" id="book_img" name="img" accept="image/*">
+							</div>
+			    		</div>
+		    		</form>
+		    	</div>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="btn btn-success">Create</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		    </div>
+    	</div>
+  	</div>
+</div>
+<script type="text/javascript">
+	/* Change images before upload */
+	$('#book_img').on('change',function(){
+        readURL(this,'.book_img'); 
+    })
+    function readURL(input,selector) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (theFile) {
+                var image = new Image();
+                image.src = theFile.target.result;
+                image.onload = function() {
+                    $(selector).attr('src', this.src);
+             
+                };
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    /* END change image*/
+
+</script>

@@ -4135,3 +4135,9 @@ ul.notifications {
 .text-success {
   color: #26B99A;
 }
+
+/************* CUSTOMIZE *************/
+
+.full_width{
+  width: 100%;
+}
