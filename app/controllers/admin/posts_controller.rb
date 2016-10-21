@@ -22,8 +22,8 @@ class Admin::PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
-		@post.embed_link = get_embed_link(params['link_video'])
-		@post.img_preview = get_img_video_link(params['link_video'])
+		@post.embed_link = 'demo'
+		@post.img_preview = 'demo'
 
 		if Post.last.nil?
 			@post.slug =  '1-' + params['post']['title'].slugify_trim
