@@ -19,6 +19,17 @@ class FrontEndController < ApplicationController
 
   def show_item
   	@post = Post.find_by(slug: params[:slug])
+    @comment = @post.comments.build
+    @comments = @post.comments.paginate(page: params[:page])
+    @comment1s = []
+    @comment2s = []
+    @comments.each do |comment|
+      if comment.parent_id.nil?
+        @comment1s.push(comment)
+      else
+        @comment2s.push(comment)
+      end
+    end
   end
 
   private

@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 	has_many :tags_posts, dependent: :destroy
 
 	belongs_to :user
-
+	has_many :comments
 	validates :title, presence: { :message => " is required" }
 	validates :img_preview, presence: { :message => " is required" }
 	validates :embed_link, presence: { :message => " is required" }
