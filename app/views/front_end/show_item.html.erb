@@ -54,6 +54,18 @@
 					  	</div>
 					</div>
 				</div>
+				<div>
+					<h3>Comments</h3>
+					<% if signed_in? %>
+				        <%= render 'comments/comment_form', post: @post %>
+					<% end %>
+				    <% if @post.comments.any? %>
+				    	<div id = "comments-">
+				    		<%= render @comment1s , comment2s: @comment2s %>
+				      		<%= will_paginate @comments %>
+				    	</div>
+				    <% end %>
+				</div>
 				<!-- END RIGHT CONTENT -->
 			</div>
 		</div>

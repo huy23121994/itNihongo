@@ -1,0 +1,7 @@
+<% if @comment.parent_id.nil? %>
+	$("#comments-").prepend("<%= j render('comments/comment', comment: @comment, comment2s: @comment2s) %>")
+<% else %>
+	$("#comments-<%= @comment.parent_id %>").prepend("<%= j render('comments/comment', comment: @comment, comment2s: @comment2s) %>")
+<% end %>
+$("#comment_content").val("");
+$(".reply_content").val("");

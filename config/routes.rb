@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   get 'category/:slug' => 'front_end#category', as: 'category'
   get 'tag/:slug' => 'front_end#tag', as: 'tag'
   get 'admin' => 'admin/users#index'
-
+  resources :comments,          only: [:create, :destroy]
 end
