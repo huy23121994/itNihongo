@@ -1,6 +1,5 @@
 class Admin::CategoriesController < ApplicationController
 	before_action :signed_in_user
-	before_action :verify_admin
 
 	def index
 		@categories = Category.get_all_categories

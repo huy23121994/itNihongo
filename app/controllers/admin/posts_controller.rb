@@ -1,6 +1,5 @@
 class Admin::PostsController < ApplicationController
 	before_action :signed_in_user
-	before_action :verify_admin
 	
 	include PostsHelper
 

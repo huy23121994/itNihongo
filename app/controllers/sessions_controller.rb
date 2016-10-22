@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def view_sign_in #new
+  def view_sign_in
     if signed_in?
       redirect_to admin_path
     else
@@ -13,16 +13,12 @@ class SessionsController < ApplicationController
 	  	if user.authenticate(params[:session][:password])
 	  		sign_in user
 	  		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        if user.admin?
-	  		  redirect_back_or admin_user_path(user)
-        elsif user.user?
-          redirect_back_or root_path
-        end
+	  		redirect_back_or admin_user_path(user)
 	  	else
 	  		flash[:danger] = 'Password is not correct!'
 	  		redirect_to :back
-		  end
-	  else
+		end
+	else
   		flash[:danger] = "Don't exist this user"
   		redirect_to :back
   	end
