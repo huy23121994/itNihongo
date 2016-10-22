@@ -16,9 +16,11 @@
 
 </head>
 <body class="<%= yield :body_class %>">
-
+	<%= render "layouts/header" %>
 	<%= yield :content %>
 
 	<%= yield :add_js %>
+	<%= render "layouts/footer" %>
 </body>
 </html>
+yield

@@ -5,5 +5,11 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   include ApplicationHelper
-
+  
+  def verify_admin
+    unless current_user.admin?
+      flash[:danger] = "autherize resoure"
+      redirect_to root_path
+    end
+  end
 end

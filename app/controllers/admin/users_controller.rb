@@ -1,8 +1,10 @@
 class Admin::UsersController < ApplicationController
 	before_action :signed_in_user, only: [:index,:show,:update]
+	before_action :signed_in_user
+	before_action :verify_admin
 
 	def index
-		@users = User.get_all_users
+		@users = User.all
 	end
 
 	def new
@@ -10,8 +12,7 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def show
-		user_id = params['id']
-		@user = User.get_user(user_id)
+		@user = User.find_by_id params[:id]
 	end
 
 	def create
@@ -25,9 +26,8 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def update
-		user_id = params['id']
-		@user = User.update_user(user_id,user_update_params)
-		if !@user.errors.any?
+		@user = User.find_by_id params[:id]
+		if @user.update_attributes user_update_params
 			flash[:success] = "Profile successfully updated"
 			redirect_to :back
 		else

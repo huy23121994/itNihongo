@@ -8,27 +8,29 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
 
-  def self.get_all_users
-    self.all
-  end
+  enum role: [:user, :admin]
 
-  def self.get_user(user_id)
-    self.find(user_id)
-  end
+  # def self.get_all_users # User.all
+  #   self.all
+  # end
 
-  def self.create_user(data_create)
-    user = self.new(data_create)
-    user.role = 'User'
-    user.save
-    return user
-  end
+  # def self.get_user(user_id) # User.find_by_id id
+  #   self.find(user_id)
+  # end
 
-  def self.update_user(user_id,data_update)
-    user = self.find(user_id)
-    user.update(data_update)
+  # def self.create_user(data_create) # User.new params[....] if User.save ... else ...
+  #   user = self.new(data_create)
+  #   user.role = 'User'
+  #   user.save
+  #   return user
+  # end
 
-    return user
-  end
+  # def self.update_user(user_id,data_update)  # u = User.find_by_id id # if u.update_attributes ... ... else ...
+  #   user = self.find(user_id)
+  #   user.update(data_update)
+
+  #   return user
+  # end
 
   # Returns the hash digest of the given string.
   def User.digest(string)
