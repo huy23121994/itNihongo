@@ -7,43 +7,45 @@
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title">Add new book</h4>
 		    </div>
-		    <div class="modal-body">
-		    	<div class="row">
-		    		<form>
-			    		<div class="col-sm-4">
-					        <img src="<%= image_path("chuyenketrangnghe.jpg") %>" class="full_width book_img">
-				        </div>
-			    		<div class="col-sm-8">
-			    			<div class="form-group">
-							    <label for="book_title">Title</label>
-							    <input type="text" class="form-control" id="book_title" name="title" placeholder="Title">
-							</div>
-			    			<div class="form-group">
-							    <label for="book_author">Athor</label>
-							    <input type="text" class="form-control" id="book_author" name="author" placeholder="Athor">
-							</div>	
-			    			<div class="form-group">
-							    <label for="book_description">Description</label>
-							    <textarea class="form-control" id="book_description" name="description" placeholder="Description" rows="8"></textarea>
-							</div>
-			    			<div class="form-group">
-							    <label for="book_img">Bookjacket</label>
-							    <input type="file" id="book_img" name="img" accept="image/*">
-							</div>
-			    		</div>
-		    		</form>
-		    	</div>
-		    </div>
-		    <div class="modal-footer">
-		        <button type="button" class="btn btn-success">Create</button>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		    </div>
+		    <%= form_for [:admin, @book], html:{'class' => '', 'data-parsley-validate' => ''} do |f| %>
+			    <div class="modal-body">
+			    	<div class="row">
+				    		<div class="col-sm-4">
+						        <img src="<%= image_path("chuyenketrangnghe.jpg") %>" class="full_width book_img">
+					        </div>
+				    		<div class="col-sm-8">
+				    			<div class="form-group">
+								    <label for="book_title">Title</label>
+								    <%= f.text_field :title, class: 'form-control', placeholder: 'Title', required: 'required' %>
+								</div>
+				    			<div class="form-group">
+								    <label for="book_author">Athor</label>
+								    <%= f.text_field :author, class: 'form-control', placeholder: 'Author', required: 'required' %>
+								</div>	
+				    			<div class="form-group">
+								    <label for="book_description">Description</label>
+								    <%= f.text_area :description, class: 'form-control', placeholder: 'Description', rows: '8', required: 'required' %>
+								</div>
+				    			<div class="form-group">
+								    <label for="book_img">Bookjacket</label>
+								    <!-- O day co 2 inut file nhe -->
+								    <!-- <input type="file" id="book_img" name="img_path" accept="image/*"> -->
+								    <%= f.file_field :img_path, accept: 'image/*', id: 'book_img_path', required: 'required' %>
+								</div>
+				    		</div>
+			    	</div>
+			    </div>
+			    <div class="modal-footer">
+			        <button type="submit" class="btn btn-success">Create</button>
+			        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+			    </div>
+		    <% end %>
     	</div>
   	</div>
 </div>
 <script type="text/javascript">
 	/* Change images before upload */
-	$('#book_img').on('change',function(){
+	$('#book_img_path').on('change',function(){
         readURL(this,'.book_img'); 
     })
     function readURL(input,selector) {

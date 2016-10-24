@@ -32,6 +32,8 @@ gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'tzinfo-data'
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'mini_magick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
