@@ -92,7 +92,27 @@
 	    	$('.img_preview div.img').click(function(){
 	    		$('#book_img_path').click()
 	    	})
+
+	    	<% if flash[:error] %>
+				new PNotify({
+	              	title: 'Error',
+	              	text: '<%= flash[:error] %>',
+	              	type: 'error',
+	              	hide: false,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
+	    	<% if flash[:success] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:success] %>',
+	              	type: 'success',
+	              	delay: 3000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
 	    })
+
 	    /* Change images before upload */
 		$('#book_img_path').on('change',function(){
 	        readURL(this,'.book_img'); 

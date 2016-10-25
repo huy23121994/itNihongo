@@ -11,8 +11,12 @@ class Admin::BooksController < ApplicationController
 	end
 
 	def update
-		@book = Book.get_book(params[:id])
-		if @book.update(book_params)
+		@book = Book.update_book(params[:id], book_params)
+		if @book
+			flash[:success] = 'Updated success'
+			redirect_to edit_admin_book_path(@book)
+		else
+			flash[:error] = 'Updated fail'
 			redirect_to :back
 		end
 	end

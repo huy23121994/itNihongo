@@ -4147,10 +4147,10 @@ ul.notifications {
 #book_content .img_preview .img{
   position: relative;
 }
-#book_content .img_preview .img:hover button{
+/*#book_content .img_preview .img:hover button{
   top: calc(50% - 12px);
   right: calc(50% - 30px);
-}
+}*/
 #book_content .img_preview .img:hover:after{
   background-color: rgba(0, 0, 0, 0.32);
 }
@@ -4174,9 +4174,9 @@ ul.notifications {
   right: 5px;
   opacity: 0.7;
   z-index: 1;
-  -webkit-transition: top 0.5s, right 0.5s;
+  /*-webkit-transition: top 0.5s, right 0.5s;
   -moz-transition: top 0.5s, right 0.5s;
-  transition: top 0.5s, right 0.5s;
+  transition: top 0.5s, right 0.5s;*/
 }
 #book_content .img_preview .book_img{
   cursor: pointer;

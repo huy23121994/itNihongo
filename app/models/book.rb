@@ -15,8 +15,14 @@ class Book < ActiveRecord::Base
 		book = self.new(data_create)
 	end
 
-	def self.get_user(user_id)
-		book = self.new(data_create)
+	def self.update_book(book_id, data_update)
+		book = self.find(book_id)
+		if book.update(data_update)
+			return book
+		else
+			return false
+		end
 	end
+
 
 end
