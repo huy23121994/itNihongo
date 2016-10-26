@@ -1,5 +1,6 @@
 class Admin::TagsController < ApplicationController
 	before_action :signed_in_user
+	before_action :check_role
 	
 	def index
 		@tags = Tag.get_all_tags

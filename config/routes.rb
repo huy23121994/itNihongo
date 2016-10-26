@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'tag/:slug' => 'front_end#tag', as: 'tag'
   get 'admin' => 'admin/users#index'
   resources :comments,          only: [:create, :destroy]
+  resources :books, only: [:index, :show]
 end

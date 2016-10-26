@@ -1,5 +1,6 @@
 class Admin::BooksController < ApplicationController
 	before_action :signed_in_user
+	before_action :check_role
 
 	def index
 		@books = Book.get_all_books

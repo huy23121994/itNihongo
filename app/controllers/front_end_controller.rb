@@ -33,9 +33,7 @@ class FrontEndController < ApplicationController
   end
 
   private
-  	def generate_categories
-  		@categories = Category.all
-  	end
+  	
     def custom_paginate(items)
       items.paginate(:page => params[:page], :per_page => 2)
     end

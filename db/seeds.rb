@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create([
-	{username:"admin", email:"admin@gmail.com", password:"password", password_confirmation:"password"},
+	{username:"admin", email:"admin@gmail.com", password:"password", password_confirmation:"password", role: 1},
 	{username:"user", email:"user@gmail.com", password:"password", password_confirmation:"password"}
 ])

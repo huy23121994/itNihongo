@@ -18,7 +18,11 @@
 	        <% end %>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="<%= sign_in_path %>" data-no-turbolink><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+	      	<% if signed_in? %>
+	      		<li><a href="<%= sign_out_path %>" data-no-turbolink><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
+	      	<%else%>
+	        	<li><a href="<%= sign_in_path %>" data-no-turbolink><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+	      	<%end%>
 	      </ul>
 	    </div>
 	  </div>

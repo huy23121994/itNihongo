@@ -1,5 +1,6 @@
 class Admin::PostsController < ApplicationController
 	before_action :signed_in_user
+	before_action :check_role
 	
 	include PostsHelper
 

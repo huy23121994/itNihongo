@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
 	before_action :signed_in_user, only: [:index,:show,:update]
+	before_action :check_role
 
 	def index
 		@users = User.get_all_users
