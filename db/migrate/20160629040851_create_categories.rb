@@ -3,6 +3,8 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :category
       t.string :slug
+      t.index :slug, unique: true
+      t.integer :created_by
 
       t.timestamps null: false
     end

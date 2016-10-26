@@ -1,70 +1,48 @@
-<% provide(:title, "HTube | Admin") %>
 
-<% content_for :back_end_main do %>
-	<div class="right_col" role="main">
- 
-	    <div class="">
-	        <div class="page-title">
-	            <div class="title_left">
-	                <h3>
-	                    Books
-	                    <button href="#" class="btn btn-xs btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"><strong>+</strong> Add new</button>
-	                </h3>
-                    <%= render 'admin/books/new' %>
-	            </div>
-	        </div>
-	        <div class="clearfix"></div>
-	 
-	        <div class="row">
-	            <div class="col-sm-12">
-	                <div class="x_panel">
-	                    <div class="x_title">
-	                        <h2>All books</h2>
-	                        <ul class="nav navbar-right panel_toolbox">
-	                            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-	                        </ul>
-	                        <div class="clearfix"></div>
-	                    </div>
-	                    <div class="x_content">
-	                        <!-- content starts here -->
-	                        <table class="table table-striped" id="list-item" cellspacing="0" width="100%">
-						        <thead>
-						            <tr>
-						                <th>Title</th>
-						                <th>Author</th>
-						                <th>Created By</th>
-						                <th width="140px">Created Time</th>
-						            </tr>
-						        </thead>
-						        <tfoot>
-						            <tr>
-						                <th>Title</th>
-						                <th>Author</th>
-						                <th>Created By</th>
-						                <th>Created Time</th>
-						            </tr>
-						        </tfoot>
-						        <tbody style="text-transform: capitalize;">
-						        	<% @books.each do |book|%>
-								        <tr>
-								        	<td>
-								        		<a href="<%= edit_admin_book_path(book) %>" class="text-success"><u><%=book.title%></u></a>
-								        	</td>
-								        	<td><%=book.author%></td>
-								        	<td><%=book.user.username%></td>
-								        	<td><%=book.created_at%></td>
-								        </tr>
-							        <% end %>
-						        </tbody>
-						    </table>
-	                        <!-- content ends here -->
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-<% end %>
+<div class="x_panel">
+    <div class="x_title">
+        <h2>All books</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <!-- content starts here -->
+        <table class="table table-striped" id="list-item" cellspacing="0" width="100%">
+	        <thead>
+	            <tr>
+	                <th>Title</th>
+	                <th>Author</th>
+	                <th>Created By</th>
+	                <th width="140px">Created Time</th>
+	            </tr>
+	        </thead>
+	        <tfoot>
+	            <tr>
+	                <th>Title</th>
+	                <th>Author</th>
+	                <th>Created By</th>
+	                <th>Created Time</th>
+	            </tr>
+	        </tfoot>
+	        <tbody style="text-transform: capitalize;">
+	        	<% @books.each do |book|%>
+			        <tr>
+			        	<td>
+			        		<a href="<%= edit_admin_book_path(book) %>" class="text-success"><u><%=book.title%></u></a>
+			        	</td>
+			        	<td><%=book.author%></td>
+			        	<td><%=book.user.username%></td>
+			        	<td><%=book.created_at%></td>
+			        </tr>
+		        <% end %>
+	        </tbody>
+	    </table>
+        <!-- content ends here -->
+    </div>
+</div>
+
 <% content_for :add_js do %>
 	<script type="text/javascript">
 	    $(document).ready(function () {
@@ -74,4 +52,4 @@
 	</script>
 <% end %>
 
-<% extends_layout "admin/layouts/master" %>
+<% extends_layout "admin/books/master" %>

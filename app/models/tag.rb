@@ -3,6 +3,9 @@ class Tag < ActiveRecord::Base
 	has_many :posts, :through => :tags_posts
 	has_many :tags_posts, dependent: :destroy
 
+	has_many :books, :through => :tags_books
+	has_many :tags_books, dependent: :destroy
+
 	validates :slug, uniqueness: { :message => " already exists" }
 	validates :tag_name, presence: { :message => " is required" }
 

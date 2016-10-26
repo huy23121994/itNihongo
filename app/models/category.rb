@@ -3,6 +3,9 @@ class Category < ActiveRecord::Base
 	has_many :posts, :through => :categories_posts
 	has_many :categories_posts, dependent: :destroy
 
+	has_many :books, :through => :categories_books
+	has_many :categories_books, dependent: :destroy
+
 	validates :slug, uniqueness: { :message => " already exists" }
 	validates :category, presence: { :message => " is required" }
 

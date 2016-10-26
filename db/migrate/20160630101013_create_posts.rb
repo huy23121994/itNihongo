@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title
       t.string :slug
+      t.index :slug, unique: true
       t.text :description
       t.string :img_preview
       t.string :embed_link
