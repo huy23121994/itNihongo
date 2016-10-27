@@ -18,12 +18,6 @@ class Admin::CategoriesController < ApplicationController
 		data_update = {}
 		data_update['slug'] = params['slug']
 		data_update['category'] = params['category']
-
-		if data_update['slug'].empty?
-			data_update['slug'] = to_slug(data_update['category'])
-		else
-			data_update['slug'] = to_slug(data_update['slug'])
-		end
 		
 		@category = Category.update_category(category_id,data_update)
 		if !@category.errors.any?
@@ -38,12 +32,6 @@ class Admin::CategoriesController < ApplicationController
 		data_create = {}
 		data_create['slug'] = params['slug']
 		data_create['category'] = params['category']
-
-		if data_create['slug'].empty?
-			data_create['slug'] = to_slug(data_create['category'])
-		else
-			data_create['slug'] = to_slug(data_create['slug'])
-		end
 		
 		@category = Category.create_category(data_create)
 

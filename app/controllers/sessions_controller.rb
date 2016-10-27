@@ -13,8 +13,11 @@ class SessionsController < ApplicationController
 	  	if user.authenticate(params[:session][:password])
 	  		sign_in user
 	  		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-	  		redirect_back_or admin_user_path(user) if user.is_admin?
-        redirect_back_or books_path
+        if user.is_admin?
+          redirect_back_or admin_user_path(user)
+        else
+          redirect_back_or books_path
+        end
 	  	else
 	  		flash[:danger] = 'Password is not correct!'
 	  		redirect_to :back
