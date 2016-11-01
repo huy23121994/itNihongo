@@ -1,0 +1,8 @@
+<nav class="bh_nav col-sm-3">
+	<h3>Danh muc</h3>
+	<ul>
+		<% @categories.each do |category| %>
+			<li><a href=""><%= category.category %></a>	</li>
+		<% end %>
+	</ul>
+</nav>

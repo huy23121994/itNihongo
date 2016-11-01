@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   	end
   end
   def generate_categories
-      @categories = Category.all
+    @categories = Category.get_all_categories
   end
 end

@@ -1,17 +1,24 @@
 
 <% content_for :add_css do %>
-	<%= stylesheet_link_tag 'front_end' %>
+	<%= stylesheet_link_tag 'nprogress' %>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 <% end %>
 
 <% content_for :content do %>
 
-	<%= render 'front_end/layouts/header' %>
+	<%= render 'front_end/header' %>
 
 	<section class="container">
-		<%= yield :front_end_main %>
+		<div class="row">
+			<%= yield :front_end_main %>
+		</div>
 	</section>
 
-	<%= render 'front_end/layouts/footer' %>
+	<%= render 'front_end/footer' %>
 
 <% end %>
 
+<% content_for :add_js do %>
+	<%= javascript_include_tag 'nprogress'%>
+	<script type="text/javascript" src="/js/front_end.js"></script>
+<% end %>

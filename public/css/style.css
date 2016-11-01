@@ -1,0 +1,78 @@
+ul{
+    list-style: none;
+    padding: 0
+}
+.full_width{
+    width: 100%;
+}
+.white_bgr{
+    background-color: #fff;
+}
+header.main_header{
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+header.main_header .search{
+    margin-top: 10px;
+}
+header.main_header .search button{
+    padding: 5px 10px;
+    border: 1px solid #05b2e9;
+    background: #05b2e9;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
+    height: 36px;
+    width: 55px;
+}
+header.main_header .search input{
+    width: 500px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #d2d2d2;
+    border-right: none;
+    height: 36px;
+    margin-right: -4px;
+    padding: 0 10px;
+    outline: none;
+}
+header.main_header .login{
+    margin-top: 7px
+}
+.breadcrumb_top{
+    background-color: #fff;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.bh_nav{
+    border: 1px solid #ddd;
+    border-top: 0;  
+}
+.bh_nav ul{
+
+}
+.bh_nav ul li{
+    padding: 6px 0;
+    border-bottom: 1px solid #ddd;
+}
+.bh_nav ul li a{
+    color: #565656;
+}
+.row_title_container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.row_title{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.row_title h3{
+    margin: 0;
+}
+.row_title a{
+    line-height: 26px;
+}
+#index_main_content > .row:not(:first-child){
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

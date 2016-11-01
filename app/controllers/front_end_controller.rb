@@ -3,6 +3,7 @@ class FrontEndController < ApplicationController
 
   def index
     @posts = custom_paginate(Post.all)
+    @books = Book.get_all_books
   end
 
   def category

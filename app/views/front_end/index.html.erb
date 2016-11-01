@@ -1,27 +1,71 @@
-<% provide(:title, "HTube | Home") %>
+<% provide(:title, "Tiki | Home") %>
 
-<% content_for :add_meta do %>
-	<meta property="og:description" content="xxx" />
-	<meta property="og:type" content="article" />
-	<meta property="og:image" content="xxx" />
+<% content_for :add_css do %>
+	<!-- <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"> -->
 <% end %>
 
 <% content_for :front_end_main do %>
-	<%= render 'front_end/list_item' %>
-	<%= will_paginate @posts %>
+	<%= render 'front_end/menu' %>
+	<div class="col-sm-9" id="index_main_content">
+	    <div class="row">
+	    	<div class="col-sm-12 row_title_container">
+	    		<div class="row_title">
+		    		<h3 class="pull-left">TOP sách được bình chọn</h3>
+		    		<a href="" class="text-right pull-right">
+		    			<u><i class="fa fa-hand-o-right"></i> Xem thêm</u>
+	    			</a>
+		    		<div class="clearfix"></div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-sm-12 row_title_container">
+	    		<div class="row_title">
+		    		<h3 class="pull-left">Sách mới nhất</h3>
+		    		<a href="" class="text-right pull-right">
+		    			<u><i class="fa fa-hand-o-right"></i> Xem thêm</u>
+	    			</a>
+		    		<div class="clearfix"></div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<img src="/img/demo.png" class="full_width">
+	    	</div>
+	    </div>
+	</div>
 <% end %>
 
 <% content_for :add_js do %>
-	<%= javascript_include_tag 'masonry.pkgd.min' %>
-	<%= javascript_include_tag 'imagesloaded.pkgd.min' %>
+	<!-- <script type="text/javascript" src="/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
-		$('section').imagesLoaded( function() {
-		  	$('.grid').masonry({
-			  	itemSelector: '.grid-item',
-			  	percentPosition: true
-			})
-		});
-	</script>
+		var swiper = new Swiper('.swiper-container', {
+	        slidesPerView: 4,
+	        nextButton: '.swiper-button-next',
+	        prevButton: '.swiper-button-prev',
+	        spaceBetween: 20
+	    });
+	</script> -->
 <% end %>
 
 <% extends_layout "front_end/layouts/master" %>
