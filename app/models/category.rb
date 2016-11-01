@@ -1,3 +1,4 @@
+
 class Category < ActiveRecord::Base
 
 	has_many :posts, :through => :categories_posts
@@ -18,6 +19,13 @@ class Category < ActiveRecord::Base
 	end
 
 	def self.update_category(category_id,data_update)
+
+		if data_update['slug'].empty?
+			data_update['slug'] = ApplicationController.helpers.to_slug(data_update['category'])
+		else
+			data_update['slug'] = ApplicationController.helpers.to_slug(data_update['slug'])
+		end
+
 		category = self.find(category_id)
 		category.category = data_update['category']
 		category.slug = data_update['slug']
@@ -27,9 +35,26 @@ class Category < ActiveRecord::Base
 	end
 
 	def self.create_category(data_create)
+
+		if data_create.kind_of?(Array)
+			data_create.each do |data|
+				self.create_category_func(data)
+			end
+		else
+			self.create_category_func(data_create)
+		end
+	end
+
+	def self.create_category_func(data)
+		if data['slug'].empty?
+			data['slug'] = ApplicationController.helpers.to_slug(data['category'])
+		else
+			data['slug'] = ApplicationController.helpers.to_slug(data['slug'])
+		end
+
 		category = self.new
-		category.category = data_create['category']
-		category.slug = data_create['slug']
+		category.category = data['category']
+		category.slug = data['slug']
 		category.save
 
 		return category
