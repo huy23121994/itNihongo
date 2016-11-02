@@ -1,0 +1,51 @@
+<% provide(:title, @book.title) %>
+
+<% content_for :add_css do %>
+	<!-- <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"> -->
+<% end %>
+
+<% content_for :front_end_main do %>
+	<div class="col-sm-12" id="show_book_main_content">
+	    <div class="row">
+	    	<div class="col-sm-5 book_img text-center">
+	    		<img src="<%= @book.img_path.url %>">
+	    	</div>
+	    	<div class="col-sm-7">
+	    		<h3><%= @book.title %></h3>
+	    		<p>Tac gia<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<div class="book_description">
+	    			<h4>Gioi thieu sach</h4>
+	    			<pre>
+	    				<%= @book.description %>
+	    			</pre>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div class="row book_comment">
+	    	<h3>Comment</h3>
+	    	<form class="text-right">
+		    	<textarea placeholder="Comment" class="full_width"></textarea>
+		    	<button type="submit" class="btn btn-success">Comment</button>
+	    	</form>
+	    	<ul class="list_comment">
+	    		<li class="row">
+	    			<div class="col-sm-3 user_comment text-center">
+	    				<img src="/img/avatar-s.png" width="40">
+	    				<p>John Connor</p>
+	    			</div>
+	    			<div class="col-sm-9 comment_content">
+	    				<p>"Chuyện kể Trăng nghe" là những chuỗi câu chuyện xảy ra trong cuộc sống hằng ngày của chúng ta, mà khi ấy chúng ta đang dường như "bỏ quên" đi mất. Bìa sách khá ấn tượng, khi phác hoạ hình một chú mèo ngồi trên bờ tường đá kế một cây trĩu quả vàng óng ánh, chú ngước nhìn về phía trăng. Một khung cảnh và những câu chuyện thật đẹp. Tác giả muốn nhắc nhở ta- những con người bận rộn, hãy chú ý đến mọi thứ đang thay đổi xung quanh, hãy cảm nhận một cách sâu sắc nhất.</p>
+	    			</div>
+	    		</li>
+	    	</ul>
+	    </div>
+	</div>
+<% end %>
+
+<% content_for :add_js do %>
+	<script type="text/javascript">
+
+	</script>
+<% end %>
+
+<% extends_layout "front_end/layouts/master" %>

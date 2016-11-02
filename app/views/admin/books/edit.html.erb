@@ -15,7 +15,7 @@
 		    		<div class="form-group img_preview">
 			    		<label for="book_img">Bookjacket</label>
 			    		<div class="img">
-					        <img src="<%= @book.img_path.url.nil? ? image_path("chuyenketrangnghe.jpg") : @book.img_path.url %>" class="full_width book_img img-thumbnail">
+					        <img src="<%= @book.img_path.url.nil? ? '/img/demo.png' : @book.img_path.url %>" class="full_width book_img img-thumbnail">
 				        	<button type="button" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
 			        	</div>
 				    </div>

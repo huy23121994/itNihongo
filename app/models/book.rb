@@ -8,8 +8,12 @@ class Book < ActiveRecord::Base
 
 	mount_uploader :img_path, ImageUploader
 
-	def self.get_all_books
-		Book.all
+	def self.get_all_books()
+		Book.all.order(created_at: :desc)
+	end
+
+	def self.get_books(book_number)
+		Book.all.order(created_at: :desc).take(book_number)
 	end
 
 	def self.get_book(book_id)

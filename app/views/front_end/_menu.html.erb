@@ -2,7 +2,7 @@
 	<h3>Danh muc</h3>
 	<ul>
 		<% @categories.each do |category| %>
-			<li><a href=""><%= category.category %></a>	</li>
+			<li><a href="<%= category_path(category.slug) %>"><%= category.category %></a>	</li>
 		<% end %>
 	</ul>
 </nav>

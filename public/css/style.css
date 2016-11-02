@@ -76,3 +76,48 @@ header.main_header .login{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+#show_book_main_content .book_description pre{
+    white-space: pre-line;
+    font-family: inherit;
+    padding: 0;
+    font-size: inherit;
+    word-break: break-word;
+    text-align: justify;
+    background-color: #fff;
+    border: none;
+}
+#show_book_main_content > .row{
+    padding: 30px 0;
+}
+#show_book_main_content > .book_img img{
+    display: inline-block;
+}
+#show_book_main_content > .book_description{
+    margin-top: 30px;
+}
+#show_book_main_content > .book_description h4{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+#show_book_main_content > .book_comment form textarea{
+    padding: 5px;
+    border: 1px solid #ddd;
+    height: 100px;
+    resize: none;
+}
+#show_book_main_content ul.list_comment{
+    margin-top: 30px;
+}
+#show_book_main_content ul.list_comment > li{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ddd;
+}
+#show_book_main_content ul.list_comment .row{
+    margin-left: 0;
+    margin-right: 0;
+}
+#show_book_main_content .list_comment{
+    margin-top: 30px;
+}

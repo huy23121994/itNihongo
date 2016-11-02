@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'post/:slug' => 'front_end#show_item', as: 'post'
   get 'category/:slug' => 'front_end#category', as: 'category'
   get 'tag/:slug' => 'front_end#tag', as: 'tag'
+  get 'books/:slug' => 'front_end#show_book', as: 'book'
+  get 'books' => 'front_end#all_book', as: 'books'
   get 'admin' => 'admin/users#index'
   resources :comments,          only: [:create, :destroy]
-  resources :books, only: [:index, :show]
+  # resources :books, only: [:index, :show]
 end
