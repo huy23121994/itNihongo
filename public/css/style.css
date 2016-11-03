@@ -111,27 +111,14 @@ footer{
     height: 100px;
     resize: none;
 }
-#show_book_main_content ul.list_comment{
-    margin-top: 30px;
-}
-#show_book_main_content ul.list_comment > li{
+#show_book_main_content ul.list_reviews > li{
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
-#show_book_main_content ul.list_comment .row{
+#show_book_main_content ul.list_reviews .row{
     margin-left: 0;
     margin-right: 0;
-}
-#show_book_main_content .list_comment{
-    margin-top: 30px;
-}
-#show_book_main_content .list_categories a{
-    padding: 0 5px;
-    display: inline-block;
-}
-#show_book_main_content .list_categories a:not(:last-child ){
-    border-right: 1px solid;
 }
 #user_main_content{
     padding-top: 20px;

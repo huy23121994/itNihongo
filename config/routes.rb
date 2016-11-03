@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   get 'profile' => 'user#show_user', as: 'profile_user'
   post 'profile/update' => 'user#update_user', as: 'profile_user_update'
 
-  resources :comments, only: [:create, :destroy]
+  resources :comments,          only: [:create, :destroy]
+  resources :reviews,          only: [:create, :destroy]
+  # resources :books, only: [:index, :show]
 end
