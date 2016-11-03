@@ -11,18 +11,26 @@
 			<div class="pull-left" style="margin-right:20px">
 				<img src="/img/avatar-s.png" width="40">
 			</div>
-			<p style="padding-top:11px">
+			<div style="padding-top:11px" class="pull-left">
 				<% if signed_in? %>
-					<% if current_user.is_admin? %>
-						<a href="<%= admin_path %>" class="text-capitalize" data-no-turbolink>Hello <%= current_user.username %></a>
-					<% else %>
-						<a href="<%= front_end_user_path %>" class="text-capitalize">Hello <%= current_user.username %></a>
-					<% end %> | 
-					<a href="<%= sign_out_path %>">Đăng xuất</a>
+					<div class="dropdown">
+						<a id="dLabel" class="text-capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+						    Hello <%= current_user.username %>
+						    <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+						    <li><a href="<%= profile_user_path %>" class="text-capitalize">Trang cá nhân</a></li>
+						    <% if current_user.is_admin? %>
+						    	<li><a href="<%= admin_path %>" data-no-turbolink>Bảng điều khiển</a></li>
+						    <% end %>
+						    <li><a href="<%= sign_out_path %>">Đăng xuất</a></li>
+						</ul>
+					</div>
 				<% else %>
-					<a href="<%= sign_in_path %>" data-no-turbolink>Đăng nhập</a>
+					<a href="<%= sign_in_path %>" data-no-turbolink>Đăng nhập</a> |
+					<a href="<%= sign_up_path %>" data-no-turbolink>Đăng ký</a>
 				<% end %>
-			</p>
+			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -30,7 +38,7 @@
 <div class="container-fluid" style="border-top:1px solid #ddd;border-bottom:1px solid #ddd">
 	<div class="container">
 		<ol class="breadcrumb breadcrumb_top">
-		  <li><a href="#">Trang chủ</a></li>
+		  <li><a href="<%= root_path %>">Trang chủ</a></li>
 		  <li class="active">Data</li>
 		</ol>
 	</div>

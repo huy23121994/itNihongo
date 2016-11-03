@@ -18,6 +18,10 @@ class Category < ActiveRecord::Base
 		self.find(category_id)
 	end
 
+	def self.get_category_by_slug(category_slug)
+		self.find_by(slug: category_slug)
+	end
+
 	def self.update_category(category_id,data_update)
 
 		if data_update['slug'].empty?

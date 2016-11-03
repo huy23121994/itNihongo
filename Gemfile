@@ -34,6 +34,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'tzinfo-data'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
+gem 'searchkick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
