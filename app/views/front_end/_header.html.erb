@@ -7,12 +7,21 @@
 			<input type="text" name="" placeholder="Search">
 			<button type="submit">TÌM</button>
 		</div>
-		<div class="col-sm-2 login">
+		<div class="col-sm-3 login">
 			<div class="pull-left" style="margin-right:20px">
 				<img src="/img/avatar-s.png" width="40">
 			</div>
 			<p style="padding-top:11px">
-				<a href="<%= sign_in_path %>" data-no-turbolink>Đăng nhập</a>
+				<% if signed_in? %>
+					<% if current_user.is_admin? %>
+						<a href="<%= admin_path %>" class="text-capitalize" data-no-turbolink>Hello <%= current_user.username %></a>
+					<% else %>
+						<a href="<%= front_end_user_path %>" class="text-capitalize">Hello <%= current_user.username %></a>
+					<% end %> | 
+					<a href="<%= sign_out_path %>">Đăng xuất</a>
+				<% else %>
+					<a href="<%= sign_in_path %>" data-no-turbolink>Đăng nhập</a>
+				<% end %>
 			</p>
 			<div class="clearfix"></div>
 		</div>

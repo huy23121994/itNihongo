@@ -8,6 +8,10 @@ ul{
 .white_bgr{
     background-color: #fff;
 }
+body{
+    min-height: calc(100vh - 20px);
+    position: relative;
+}
 header.main_header{
     height: 60px;
     margin-top: 20px;
@@ -39,6 +43,10 @@ header.main_header .search input{
 header.main_header .login{
     margin-top: 7px
 }
+footer{
+    position: absolute;
+    bottom: 0;
+}
 .breadcrumb_top{
     background-color: #fff;
     padding-left: 0;
@@ -48,12 +56,9 @@ header.main_header .login{
     border: 1px solid #ddd;
     border-top: 0;  
 }
-.bh_nav ul{
-
-}
 .bh_nav ul li{
     padding: 6px 0;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .bh_nav ul li a{
     color: #565656;
@@ -120,4 +125,8 @@ header.main_header .login{
 }
 #show_book_main_content .list_comment{
     margin-top: 30px;
+}
+#user_main_content{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

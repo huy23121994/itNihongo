@@ -10,6 +10,7 @@ class FrontEndController < ApplicationController
   	category = Category.find_by(slug: params[:slug])
   	# @books = custom_paginate(category.books)
     @books = category.books
+    @list_books_name = category.category
   	render 'list_books'
   end
 
@@ -26,7 +27,14 @@ class FrontEndController < ApplicationController
 
   def all_book
     @books = Book.get_all_books()
+    @list_books_name = 'Tất cả các sách'
     render 'list_books'
+  end
+
+  def show_user
+    @user = current_user
+    # abort @user.inspect
+    render 'show_user'
   end
 
   def show_item
