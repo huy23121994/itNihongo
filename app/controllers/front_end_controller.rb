@@ -24,6 +24,11 @@ class FrontEndController < ApplicationController
     book_slug = params[:slug]
     @book = Book.get_book_by_slug(book_slug)
     @categories = @book.categories
+    @book = Book.find_by(slug: params[:slug])
+    if signed_in?
+      @review = current_user.reviews.build
+    end
+    @reviews = @book.reviews.paginate(page: params[:page])
     render 'show_book'
   end
 
@@ -37,15 +42,6 @@ class FrontEndController < ApplicationController
   	@post = Post.find_by(slug: params[:slug])
     @comment = @post.comments.build
     @comments = @post.comments.paginate(page: params[:page])
-    @comment1s = []
-    @comment2s = []
-    @comments.each do |comment|
-      if comment.parent_id.nil?
-        @comment1s.push(comment)
-      else
-        @comment2s.push(comment)
-      end
-    end
   end
 
   private

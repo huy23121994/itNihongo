@@ -3,9 +3,9 @@
 one:
   content: MyText
   user_id: 
-  review_id: 
+  book_id: 
 
 two:
   content: MyText
   user_id: 
-  review_id: 
+  book_id: 

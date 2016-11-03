@@ -5,12 +5,8 @@ class Book < ActiveRecord::Base
 	has_many :categories_books, dependent: :destroy
 	has_many :tags, :through => :tags_books
 	has_many :tags_books, dependent: :destroy
-
-	# SEARCH ENGINE
-	# searchkick
-
 	mount_uploader :img_path, ImageUploader
-
+	has_many :reviews
 	def self.get_all_books()
 		Book.all.order(created_at: :desc)
 	end
@@ -49,6 +45,4 @@ class Book < ActiveRecord::Base
 			return false
 		end
 	end
-
-
 end
