@@ -6,6 +6,9 @@ class Book < ActiveRecord::Base
 	has_many :tags, :through => :tags_books
 	has_many :tags_books, dependent: :destroy
 
+	# SEARCH ENGINE
+	# searchkick
+
 	mount_uploader :img_path, ImageUploader
 
 	def self.get_all_books()
@@ -18,6 +21,10 @@ class Book < ActiveRecord::Base
 
 	def self.get_book(book_id)
 		book = self.find_by(id: book_id)
+	end
+
+	def self.get_book_by_slug(book_slug)
+		book = self.find_by(slug: book_slug)
 	end
 
 	def self.create_book(data_create)

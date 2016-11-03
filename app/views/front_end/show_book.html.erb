@@ -12,7 +12,12 @@
 	    	</div>
 	    	<div class="col-sm-7">
 	    		<h3><%= @book.title %></h3>
-	    		<p>Tac gia<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<p>Tác giả<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<p class="list_categories">Chuyên mục<strong class="text-primary">
+		    		<% @categories.each do |category| %>
+		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
+		    		<% end %>
+	    		</strong></p>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
 	    			<pre>

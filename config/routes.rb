@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   get 'books/:slug' => 'front_end#show_book', as: 'book'
   get 'books' => 'front_end#all_book', as: 'books'
 
-  get 'user' => 'front_end#show_user', as: 'front_end_user'
+  get 'profile' => 'user#show_user', as: 'profile_user'
+  post 'profile/update' => 'user#update_user', as: 'profile_user_update'
 
-  resources :comments,          only: [:create, :destroy]
-  # resources :books, only: [:index, :show]
+  resources :comments, only: [:create, :destroy]
 end

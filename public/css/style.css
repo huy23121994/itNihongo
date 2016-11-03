@@ -97,10 +97,10 @@ footer{
 #show_book_main_content > .book_img img{
     display: inline-block;
 }
-#show_book_main_content > .book_description{
+#show_book_main_content .book_description{
     margin-top: 30px;
 }
-#show_book_main_content > .book_description h4{
+#show_book_main_content .book_description h4{
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     margin-top: 30px;
@@ -125,6 +125,13 @@ footer{
 }
 #show_book_main_content .list_comment{
     margin-top: 30px;
+}
+#show_book_main_content .list_categories a{
+    padding: 0 5px;
+    display: inline-block;
+}
+#show_book_main_content .list_categories a:not(:last-child ){
+    border-right: 1px solid;
 }
 #user_main_content{
     padding-top: 20px;
