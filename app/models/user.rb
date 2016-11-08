@@ -61,6 +61,6 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
   def is_admin?
-    role == '1' ? true : false
+    role == 1 ? true : false
   end
 end
