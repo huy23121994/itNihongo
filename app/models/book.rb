@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
 	has_many :reviews
 
 	mount_uploader :img_path, ImageUploader
-	searchkick
+	searchkick autocomplete: ['title']
 	
 	def self.get_all_books()
 		Book.all.order(created_at: :desc)

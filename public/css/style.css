@@ -39,6 +39,7 @@ header.main_header .search input{
     margin-right: -4px;
     padding: 0 10px;
     outline: none;
+    margin-top: -8px;
 }
 header.main_header .login{
     margin-top: 7px
@@ -124,3 +125,24 @@ footer{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+/****************  TYPEAHEAD CSS  **********************/
+.tt-dropdown-menu {
+    border: 1px solid #ddd;
+    width: calc(100% + 5px);
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
+}
+.tt-dropdown-menu p{
+    margin: 0;
+}
+.tt-suggestion{
+    padding: 5px 8px;
+    background-color: #f4fcff;
+}
+.tt-is-under-cursor{
+    background-color: #05b2e9!important;
+    color: #fff
+}
+/***************** END TYPEAHEAD CSS *****************/
