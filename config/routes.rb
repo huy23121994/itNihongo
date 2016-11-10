@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'tag/:slug' => 'front_end#tag', as: 'tag'
   get 'books/:slug' => 'front_end#show_book', as: 'book'
   get 'books' => 'front_end#all_book', as: 'books'
+  get 'book/autocomplete' => 'front_end#autocomplete', as: 'autocomplete'
 
   get 'profile' => 'user#show_user', as: 'profile_user'
   post 'profile/update' => 'user#update_user', as: 'profile_user_update'

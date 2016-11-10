@@ -44,6 +44,10 @@ class FrontEndController < ApplicationController
     @comments = @post.comments.paginate(page: params[:page])
   end
 
+  def autocomplete
+    render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
+  end
+
   private
   	
     def custom_paginate(items)

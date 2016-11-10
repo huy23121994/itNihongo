@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20161103132904) do
   create_table "categories", force: :cascade do |t|
     t.string   "category"
     t.string   "slug"
+    t.integer  "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -86,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161103132904) do
   create_table "tags", force: :cascade do |t|
     t.string   "tag_name"
     t.string   "slug"
+    t.integer  "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,13 +107,13 @@ ActiveRecord::Schema.define(version: 20161103132904) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
+    t.string   "remember_digest"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.string   "fullname"
     t.string   "address"
-    t.string   "role"
-    t.string   "remember_digest"
+    t.integer  "role"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
