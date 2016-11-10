@@ -38,10 +38,11 @@ class FrontEndController < ApplicationController
     render 'list_books'
   end
 
-  def show_item
-  	@post = Post.find_by(slug: params[:slug])
-    @comment = @post.comments.build
-    @comments = @post.comments.paginate(page: params[:page])
+  def search_book
+  	@books = Book.search params[:query]
+    @category = 'Danh sách tìm kiếm'
+    # abort @books.inspect
+    render 'list_books'
   end
 
   def autocomplete
