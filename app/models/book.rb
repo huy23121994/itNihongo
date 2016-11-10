@@ -10,6 +10,7 @@ class Book < ActiveRecord::Base
 	mount_uploader :img_path, ImageUploader
 	searchkick autocomplete: ['title']
 	
+	ratyrate_rateable "quality"
 	def self.get_all_books()
 		Book.all.order(created_at: :desc)
 	end

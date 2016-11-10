@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
-
+  ratyrate_rater
   def self.get_all_users
     self.all
   end
