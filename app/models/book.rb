@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
 	has_many :reviews
 
 	mount_uploader :img_path, ImageUploader
-	searchkick autocomplete: ['title']
+	searchkick autocomplete: ['title','author']
 	
 	ratyrate_rateable "quality"
 	def self.get_all_books()
