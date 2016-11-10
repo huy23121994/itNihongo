@@ -8,6 +8,10 @@ ul{
 .white_bgr{
     background-color: #fff;
 }
+body{
+    min-height: calc(100vh - 20px);
+    position: relative;
+}
 header.main_header{
     height: 60px;
     margin-top: 20px;
@@ -35,9 +39,14 @@ header.main_header .search input{
     margin-right: -4px;
     padding: 0 10px;
     outline: none;
+    margin-top: -8px;
 }
 header.main_header .login{
     margin-top: 7px
+}
+footer{
+    position: absolute;
+    bottom: 0;
 }
 .breadcrumb_top{
     background-color: #fff;
@@ -48,12 +57,9 @@ header.main_header .login{
     border: 1px solid #ddd;
     border-top: 0;  
 }
-.bh_nav ul{
-
-}
 .bh_nav ul li{
     padding: 6px 0;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .bh_nav ul li a{
     color: #565656;
@@ -92,10 +98,10 @@ header.main_header .login{
 #show_book_main_content > .book_img img{
     display: inline-block;
 }
-#show_book_main_content > .book_description{
+#show_book_main_content .book_description{
     margin-top: 30px;
 }
-#show_book_main_content > .book_description h4{
+#show_book_main_content .book_description h4{
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     margin-top: 30px;
@@ -106,18 +112,37 @@ header.main_header .login{
     height: 100px;
     resize: none;
 }
-#show_book_main_content ul.list_comment{
-    margin-top: 30px;
-}
-#show_book_main_content ul.list_comment > li{
+#show_book_main_content ul.list_reviews > li{
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
-#show_book_main_content ul.list_comment .row{
+#show_book_main_content ul.list_reviews .row{
     margin-left: 0;
     margin-right: 0;
 }
-#show_book_main_content .list_comment{
-    margin-top: 30px;
+#user_main_content{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+
+/****************  TYPEAHEAD CSS  **********************/
+.tt-dropdown-menu {
+    border: 1px solid #ddd;
+    width: calc(100% + 5px);
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
+}
+.tt-dropdown-menu p{
+    margin: 0;
+}
+.tt-suggestion{
+    padding: 5px 8px;
+    background-color: #f4fcff;
+}
+.tt-is-under-cursor{
+    background-color: #05b2e9!important;
+    color: #fff
+}
+/***************** END TYPEAHEAD CSS *****************/

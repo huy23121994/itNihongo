@@ -3,11 +3,9 @@
 one:
   content: MyText
   user_id: 
-  parent_id: 1
-  post_id: 
+  review_id: 
 
 two:
   content: MyText
   user_id: 
-  parent_id: 1
-  post_id: 
+  review_id: 

@@ -12,7 +12,12 @@
 	    	</div>
 	    	<div class="col-sm-7">
 	    		<h3><%= @book.title %></h3>
-	    		<p>Tac gia<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<p>Tác giả<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<p class="list_categories">Chuyên mục<strong class="text-primary">
+		    		<% @categories.each do |category| %>
+		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
+		    		<% end %>
+	    		</strong></p>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
 	    			<pre>
@@ -22,21 +27,24 @@
 	    	</div>
 	    </div>
 	    <div class="row book_comment">
-	    	<h3>Comment</h3>
-	    	<form class="text-right">
-		    	<textarea placeholder="Comment" class="full_width"></textarea>
-		    	<button type="submit" class="btn btn-success">Comment</button>
-	    	</form>
-	    	<ul class="list_comment">
-	    		<li class="row">
-	    			<div class="col-sm-3 user_comment text-center">
-	    				<img src="/img/avatar-s.png" width="40">
-	    				<p>John Connor</p>
-	    			</div>
-	    			<div class="col-sm-9 comment_content">
-	    				<p>"Chuyện kể Trăng nghe" là những chuỗi câu chuyện xảy ra trong cuộc sống hằng ngày của chúng ta, mà khi ấy chúng ta đang dường như "bỏ quên" đi mất. Bìa sách khá ấn tượng, khi phác hoạ hình một chú mèo ngồi trên bờ tường đá kế một cây trĩu quả vàng óng ánh, chú ngước nhìn về phía trăng. Một khung cảnh và những câu chuyện thật đẹp. Tác giả muốn nhắc nhở ta- những con người bận rộn, hãy chú ý đến mọi thứ đang thay đổi xung quanh, hãy cảm nhận một cách sâu sắc nhất.</p>
-	    			</div>
-	    		</li>
+	    	<h3>Review</h3>
+	    	<div class="text-right">
+	    		<% if signed_in? %>
+		    		<%= form_for(@review, remote: true) do |f| %>
+						<div class="field">
+							<%= f.text_area :content, placeholder: "Review ...", id: 'review_content', class: "full_width" %>
+							<div><%= hidden_field_tag :book_id, @book.id %></div>
+						</div>
+						<%= f.submit "Reivew", class: "btn btn-success" %>
+					<% end %>
+				<% end %>
+	    	</div>
+	    	
+	    	<ul class="list_reviews">
+			    <% if @book.reviews.any? %>
+			        <%= render @reviews %>
+			      	<%= will_paginate @reviews %>
+			    <% end %>
 	    	</ul>
 	    </div>
 	</div>

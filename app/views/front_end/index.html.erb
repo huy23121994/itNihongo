@@ -17,16 +17,16 @@
 		    		<div class="clearfix"></div>
 	    		</div>
 	    	</div>
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-3 col-xs-6">
 	    		<img src="/img/demo.png" class="full_width">
 	    	</div>
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-3 col-xs-6">
 	    		<img src="/img/demo.png" class="full_width">
 	    	</div>
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-3 col-xs-6">
 	    		<img src="/img/demo.png" class="full_width">
 	    	</div>
-	    	<div class="col-sm-3">
+	    	<div class="col-sm-3 col-xs-6">
 	    		<img src="/img/demo.png" class="full_width">
 	    	</div>
 	    </div>
@@ -42,7 +42,7 @@
 		    		</div>
 		    	</div>
 		    	<% @newest_books.each do |book| %>
-			    	<div class="col-sm-3">
+			    	<div class="col-sm-3 col-xs-6">
 			    		<a href="<%= book_path(book.slug) %>">
 				    		<img src="<%= book.img_path.url %>" class="full_width">
 				    		<h5><%= book.title %></h5>

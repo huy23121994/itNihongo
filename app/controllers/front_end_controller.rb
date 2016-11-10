@@ -7,9 +7,10 @@ class FrontEndController < ApplicationController
   end
 
   def category
-  	category = Category.find_by(slug: params[:slug])
+  	category = Category.get_category_by_slug(params[:slug])
   	# @books = custom_paginate(category.books)
     @books = category.books
+    @category = category.category
   	render 'list_books'
   end
 
@@ -20,12 +21,20 @@ class FrontEndController < ApplicationController
   end
 
   def show_book
+    book_slug = params[:slug]
+    @book = Book.get_book_by_slug(book_slug)
+    @categories = @book.categories
     @book = Book.find_by(slug: params[:slug])
+    if signed_in?
+      @review = current_user.reviews.build
+    end
+    @reviews = @book.reviews.paginate(page: params[:page])
     render 'show_book'
   end
 
   def all_book
     @books = Book.get_all_books()
+    @category = 'Tất cả các sách'
     render 'list_books'
   end
 
@@ -33,15 +42,10 @@ class FrontEndController < ApplicationController
   	@post = Post.find_by(slug: params[:slug])
     @comment = @post.comments.build
     @comments = @post.comments.paginate(page: params[:page])
-    @comment1s = []
-    @comment2s = []
-    @comments.each do |comment|
-      if comment.parent_id.nil?
-        @comment1s.push(comment)
-      else
-        @comment2s.push(comment)
-      end
-    end
+  end
+
+  def autocomplete
+    render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 
   private

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 	  		sign_in user
 	  		params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         if user.is_admin?
-          redirect_back_or admin_user_path(user)
+          redirect_back_or admin_books_path
         else
           redirect_back_or books_path
         end

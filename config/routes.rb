@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'front_end#index'
 
+  get 'admin' => 'admin/users#index'
   namespace :admin do
     resources :books, path: 'books'
     resources :categories, path: 'categories'
@@ -15,12 +16,17 @@ Rails.application.routes.draw do
   post '/sign-in' => 'sessions#create'
   get '/sign-out' => 'sessions#destroy'
   
-  get 'post/:slug' => 'front_end#show_item', as: 'post'
+  # get 'post/:slug' => 'front_end#show_item', as: 'post'
   get 'category/:slug' => 'front_end#category', as: 'category'
   get 'tag/:slug' => 'front_end#tag', as: 'tag'
   get 'books/:slug' => 'front_end#show_book', as: 'book'
   get 'books' => 'front_end#all_book', as: 'books'
-  get 'admin' => 'admin/users#index'
+  get 'book/autocomplete' => 'front_end#autocomplete', as: 'autocomplete'
+
+  get 'profile' => 'user#show_user', as: 'profile_user'
+  post 'profile/update' => 'user#update_user', as: 'profile_user_update'
+
   resources :comments,          only: [:create, :destroy]
+  resources :reviews,          only: [:create, :destroy]
   # resources :books, only: [:index, :show]
 end

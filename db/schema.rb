@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026104203) do
+ActiveRecord::Schema.define(version: 20161103132904) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -50,13 +50,12 @@ ActiveRecord::Schema.define(version: 20161026104203) do
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "parent_id"
-    t.integer  "post_id"
+    t.integer  "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["review_id"], name: "index_comments_on_review_id"
   add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
@@ -72,6 +71,18 @@ ActiveRecord::Schema.define(version: 20161026104203) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "tag_name"

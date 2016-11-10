@@ -1,46 +1,11 @@
-<li id="comment-<%= comment.id %>" class = "list-unstyled" style="margin-top: 10px;">
+<li id="comment-<%= comment.id %>" class = "list-unstyled" ">
    <img src="/assets/img-a91a7fec655b1989b407263a043a93b2925cd07b860e83076e5b847651d46aa1.jpg" alt="..." class="img-circle profile_img" style="width: 45px;">
   <span class="user"><%= comment.user.username %></span>
   <span ><%= comment.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(comment.created_at) %> ago.
-  </span>
-  <div>
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<%= comment.id%>" aria-expanded="false" aria-controls="collapseExample">
-      Reply
-    </button>
-    <% if (current_user?(comment.user)) || (current_user?(comment.post.user)) %>
-      <%= link_to "delete",comment, method: :delete,data: { confirm: "You sure?" }, remote: true %>
+    <% if current_user?(comment.user) || current_user?(comment.reivew.user)%>
+        <%= link_to "delete", comment, method: :delete,data: { confirm: "You sure?" } ,remote:true %>
     <% end %>
-    <div class="collapse" id="<%= comment.id %>">
-      <div class="well">
-        <ul>
-          <div id = "comments-<%= comment.id %>">
-            <% comment2s.each do |comment2|%>
-              <% if comment2.parent_id == comment.id %>
-                  <li id="comment-<%= comment2.id %>" class = "list-unstyled">
-                    <img src="/assets/img-a91a7fec655b1989b407263a043a93b2925cd07b860e83076e5b847651d46aa1.jpg" alt="..." class="img-circle profile_img" style="width: 45px;">
-                    <span class="user"><%= comment2.user.username %></span>
-                    <span class="content"><%= comment2.content %></span>
-                    <span class="timestamp">
-                      Posted <%= time_ago_in_words(comment2.created_at) %> ago.
-                    </span>
-                    <% if (current_user?(comment2.user)) || (current_user?(comment2.post.user)) %>
-                      <%= link_to "delete",comment2, method: :delete,data: { confirm: "You sure?" }, remote: true %>
-                    <% end %>
-                  </li>
-              <% end %>
-            <% end %>
-          </div>
-        </ul>
-        <ul>
-          <li>
-            <% if signed_in? %>
-              <%= render 'comments/reply_comment_form', post: @post, parent: comment %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  </span>
 </li>
