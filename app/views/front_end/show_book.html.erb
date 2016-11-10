@@ -18,6 +18,10 @@
 		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
 		    		<% end %>
 	    		</strong></p>
+	    		
+	    		<% unless @book.average("quality").nil? %>
+					Rate_avg : <%= @book.average("quality").avg %>
+				<% end %>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
 	    			<pre>
@@ -26,6 +30,9 @@
 	    		</div>
 	    	</div>
 	    </div>
+	    <% if signed_in? %>
+	    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+	    <% end %>
 	    <div class="row book_comment">
 	    	<h3>Review</h3>
 	    	<div class="text-right">

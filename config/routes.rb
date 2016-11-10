@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'front_end#index'
 
   get 'admin' => 'admin/users#index'
