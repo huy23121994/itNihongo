@@ -30,6 +30,7 @@ class Tag < ActiveRecord::Base
 		tag = self.new
 		tag.tag_name = data_create['tag_name']
 		tag.slug = data_create['slug']
+		tag.created_by = data_create['created_by']
 		tag.save
 
 		return tag

@@ -10,6 +10,11 @@ class Admin::TagsController < ApplicationController
 	def edit
 		tag_id = params['id']
 		@tag = Tag.get_tag(tag_id)
+		if @tag.created_by.nil?
+			@username = 'System'
+		else
+			@username = User.get_user(@tag.created_by).username
+		end
 	end
 
 	def update
@@ -38,6 +43,7 @@ class Admin::TagsController < ApplicationController
 		data_create = {}
 		data_create['slug'] = params['slug']
 		data_create['tag_name'] = params['tag_name']
+		data_create['created_by'] = @current_user.id
 
 		if data_create['slug'].empty?
 			data_create['slug'] = to_slug(data_create['tag_name'])

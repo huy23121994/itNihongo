@@ -16,5 +16,11 @@
 !/log/.keep
 /tmp
 
+# Igore byebug history
+.byebug_history
+
+# Igore image
+/public/uploads/book/img_path
+
 # Ignore all files in /vendor/bundle/
 /vendor/bundle/*

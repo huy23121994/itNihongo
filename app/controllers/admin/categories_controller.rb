@@ -10,6 +10,11 @@ class Admin::CategoriesController < ApplicationController
 	def edit
 		category_id = params['id']
 		@category = Category.get_category(category_id)
+		if @category.created_by.nil?
+			@username = 'System'
+		else
+			@username = User.get_user(@category.created_by).username
+		end
 	end
 
 	def update
@@ -32,9 +37,9 @@ class Admin::CategoriesController < ApplicationController
 		data_create = {}
 		data_create['slug'] = params['slug']
 		data_create['category'] = params['category']
+		data_create['created_by'] = @current_user.id
 		
 		@category = Category.create_category(data_create)
-
 		if !@category.errors.any?
 			flash['notice'] = "Category created successfully"
 			redirect_to admin_categories_path
