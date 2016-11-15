@@ -59,6 +59,7 @@ class Category < ActiveRecord::Base
 		category = self.new
 		category.category = data['category']
 		category.slug = data['slug']
+		category.created_by = data['created_by']
 		category.save
 
 		return category

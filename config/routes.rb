@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   root 'front_end#index'
 
   get 'admin' => 'admin/users#index'
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   get 'books/:slug' => 'front_end#show_book', as: 'book'
   get 'books' => 'front_end#all_book', as: 'books'
   get 'book/autocomplete' => 'front_end#autocomplete', as: 'autocomplete'
+  get 'book/search_book' => 'front_end#search_book', as: 'search_book'
 
   get 'profile' => 'user#show_user', as: 'profile_user'
   post 'profile/update' => 'user#update_user', as: 'profile_user_update'

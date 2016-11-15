@@ -35,6 +35,7 @@ gem 'tzinfo-data'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
 gem 'searchkick'
+gem 'ratyrate'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
