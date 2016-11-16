@@ -2,9 +2,8 @@ $.fn.raty.defaults.half = false;
 $.fn.raty.defaults.halfShow = true;
 $.fn.raty.defaults.path = "/assets";
 $.fn.raty.defaults.cancel = false;
-
-$(function(){
-  $(".star").each(function() {
+function run_rate(){
+    $(".star").each(function() {
     var $readonly = ($(this).attr('data-readonly') == 'true');
     var $half     = ($(this).attr('data-enable-half') == 'true');
     var $halfShow = ($(this).attr('data-half-show') == 'true');
@@ -59,4 +58,10 @@ $(function(){
       }
     });
   });
+}
+$(document).ready(function(){
+  run_rate();
+});
+$(document).on('page:load', function() {
+  run_rate();
 });
