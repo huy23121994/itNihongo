@@ -6,7 +6,16 @@ class UserController < ApplicationController
   	end
 
   	def update_user
-  		abort params.inspect
+  		if current_user.update_attributes(user_update_params)
+  			flash[:alert] = "profile updated"
+  			redirect_to :back
+  		else
+  			flash[:alert] = "profile not updated"
+  		end
   	end
 
+  	private
+		def user_update_params
+			params.require(:user).permit(:fullname,:address)
+		end
 end

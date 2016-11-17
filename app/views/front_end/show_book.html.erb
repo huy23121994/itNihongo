@@ -8,19 +8,28 @@
 	<div class="col-sm-12" id="show_book_main_content">
 	    <div class="row">
 	    	<div class="col-sm-5 book_img text-center">
-	    		<img src="<%= @book.img_path.url %>">
+	    		<img src="<%= @book.img_path.url %>" class="full_width">
 	    	</div>
 	    	<div class="col-sm-7">
-	    		<h3><%= @book.title %></h3>
-	    		<p>Tác giả<strong class="text-primary"><%= @book.author %></strong></p>
+	    		<h3 class="text-capitalize"><%= @book.title %></h3>
+	    		<p>Tác giả : <strong class="text-primary text-capitalize"><%= @book.author %></strong></p>
 	    		<p class="list_categories">Chuyên mục<strong class="text-primary">
 		    		<% @categories.each do |category| %>
 		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
 		    		<% end %>
 	    		</strong></p>
-	    		
+			   	<% if signed_in? %>
+			    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+			    <% else %>
+			    	<div>
+			    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+			    			<div>
+			    				<a class="rate" href="<%= sign_in_path %>" data-no-turbolink></a>
+			    			</div>
+			    	</div>
+			    <% end %>
 	    		<% unless @book.average("quality").nil? %>
-					Rate_avg : <%= @book.average("quality").avg %>
+					(<%= @book.average("quality").avg %>)
 				<% end %>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
@@ -30,9 +39,7 @@
 	    		</div>
 	    	</div>
 	    </div>
-	    <% if signed_in? %>
-	    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
-	    <% end %>
+
 	    <div class="row book_comment">
 	    	<h3>Review</h3>
 	    	<div class="text-right">
@@ -46,8 +53,7 @@
 					<% end %>
 				<% end %>
 	    	</div>
-	    	
-	    	<ul class="list_reviews">
+	    	<ul class="list_comment">
 			    <% if @book.reviews.any? %>
 			        <%= render @reviews %>
 			      	<%= will_paginate @reviews %>
@@ -60,6 +66,18 @@
 <% content_for :add_js do %>
 	<script type="text/javascript">
 
+	</script>
+	<script>
+	$(document).ready(function(){
+	    $(".rate").click(function(){
+	        var r = confirm("You must login!");
+	        if (r) {
+	            return true;
+	        } else {
+	            return false;
+	        } 
+	    });
+	});
 	</script>
 <% end %>
 

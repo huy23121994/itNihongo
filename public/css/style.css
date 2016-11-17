@@ -44,10 +44,10 @@ header.main_header .search input{
 header.main_header .login{
     margin-top: 7px
 }
-footer{
+/*footer{
     position: absolute;
     bottom: 0;
-}
+}*/
 .breadcrumb_top{
     background-color: #fff;
     padding-left: 0;
@@ -112,12 +112,12 @@ footer{
     height: 100px;
     resize: none;
 }
-#show_book_main_content ul.list_reviews > li{
-    padding-top: 20px;
-    padding-bottom: 20px;
+#show_book_main_content ul.list_comment > li{
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
 }
-#show_book_main_content ul.list_reviews .row{
+#show_book_main_content ul.list_comment .row{
     margin-left: 0;
     margin-right: 0;
 }
@@ -146,3 +146,41 @@ footer{
     color: #fff
 }
 /***************** END TYPEAHEAD CSS *****************/
+.rate {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: -20px;
+}
+.comment_content pre {
+    white-space: pre-line;
+    font-family: inherit;
+    padding: 0;
+    font-size: inherit;
+    word-break: break-word;
+    background-color: #fff;
+    border: none;
+    margin: 0;
+}
+.comment_content .timestamp{
+    color: #a0a0a0;
+    font-size: 13px;
+}
+.well {
+    background-color: #fff; 
+    border: 0;
+}
+.list_comment {
+    margin-top: 20px;
+}
+/*footer-height*/
+.footer_height{
+    height: 300px;
+    border-top: 1px;
+    padding-top: 5px;
+    background: #E6E6E6;
+}
+.button_footer{
+    margin-top: 10px;
+}
