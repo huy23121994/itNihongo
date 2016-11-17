@@ -18,8 +18,18 @@
 		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
 		    		<% end %>
 	    		</strong></p>
+			   	<% if signed_in? %>
+			    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+			    <% else %>
+			    	<div>
+			    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+			    			<div>
+			    				<a class="rate" href="<%= sign_in_path %>" data-no-turbolink></a>
+			    			</div>
+			    	</div>
+			    <% end %>
 	    		<% unless @book.average("quality").nil? %>
-					Rate_avg : <%= @book.average("quality").avg %>
+					(<%= @book.average("quality").avg %>)
 				<% end %>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
@@ -29,16 +39,7 @@
 	    		</div>
 	    	</div>
 	    </div>
-	    <% if signed_in? %>
-	    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
-	    <% else %>
-	    	<div>
-	    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
-	    			<div>
-	    				<a class="rate" href="<%= sign_in_path %>" data-no-turbolink></a>
-	    			</div>
-	    	</div>
-	    <% end %>
+
 	    <div class="row book_comment">
 	    	<h3>Review</h3>
 	    	<div class="text-right">

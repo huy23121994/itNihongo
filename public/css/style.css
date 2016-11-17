@@ -112,12 +112,12 @@ footer{
     height: 100px;
     resize: none;
 }
-#show_book_main_content ul.list_reviews > li{
-    padding-top: 20px;
-    padding-bottom: 20px;
+#show_book_main_content ul.list_comment > li{
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
 }
-#show_book_main_content ul.list_reviews .row{
+#show_book_main_content ul.list_comment .row{
     margin-left: 0;
     margin-right: 0;
 }
@@ -153,11 +153,19 @@ footer{
     position: absolute;
     margin-top: -20px;
 }
-pre {
-    background-color: #fff;
-    border: 0;
+.comment_content pre {
+    white-space: pre-line;
+    font-family: inherit;
     padding: 0;
-    font-size: 14px;
+    font-size: inherit;
+    word-break: break-word;
+    background-color: #fff;
+    border: none;
+    margin: 0;
+}
+.comment_content .timestamp{
+    color: #a0a0a0;
+    font-size: 13px;
 }
 .well {
     background-color: #fff; 
