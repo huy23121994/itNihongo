@@ -18,7 +18,6 @@
 		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
 		    		<% end %>
 	    		</strong></p>
-	    		
 	    		<% unless @book.average("quality").nil? %>
 					Rate_avg : <%= @book.average("quality").avg %>
 				<% end %>
@@ -32,6 +31,13 @@
 	    </div>
 	    <% if signed_in? %>
 	    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+	    <% else %>
+	    	<div>
+	    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+	    			<div>
+	    				<a class="rate" href="<%= sign_in_path %>" data-no-turbolink></a>
+	    			</div>
+	    	</div>
 	    <% end %>
 	    <div class="row book_comment">
 	    	<h3>Review</h3>
@@ -46,8 +52,7 @@
 					<% end %>
 				<% end %>
 	    	</div>
-	    	
-	    	<ul class="list_reviews">
+	    	<ul class="list_comment">
 			    <% if @book.reviews.any? %>
 			        <%= render @reviews %>
 			      	<%= will_paginate @reviews %>
@@ -60,6 +65,18 @@
 <% content_for :add_js do %>
 	<script type="text/javascript">
 
+	</script>
+	<script>
+	$(document).ready(function(){
+	    $(".rate").click(function(){
+	        var r = confirm("You must login!");
+	        if (r) {
+	            return true;
+	        } else {
+	            return false;
+	        } 
+	    });
+	});
 	</script>
 <% end %>
 
