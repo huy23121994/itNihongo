@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
+
+  enum role: [:User, :Administrator]
+
 	has_many :posts
   has_many :reviews
   has_many :comments
@@ -61,6 +64,6 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
   def is_admin?
-    role == 1 ? true : false
+    role == "Administrator" ? true : false
   end
 end
