@@ -44,10 +44,10 @@ header.main_header .search input{
 header.main_header .login{
     margin-top: 7px
 }
-footer{
+/*footer{
     position: absolute;
     bottom: 0;
-}
+}*/
 .breadcrumb_top{
     background-color: #fff;
     padding-left: 0;
@@ -173,4 +173,14 @@ footer{
 }
 .list_comment {
     margin-top: 20px;
+}
+/*footer-height*/
+.footer_height{
+    height: 300px;
+    border-top: 1px;
+    padding-top: 5px;
+    background: #E6E6E6;
+}
+.button_footer{
+    margin-top: 10px;
 }
