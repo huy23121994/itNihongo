@@ -1,12 +1,22 @@
 <% provide(:title, @user.username) %>
 
 <% content_for :front_end_main do %>
+
+	<% if flash.alert %>
+		<br>
+  		<div class="alert alert-block alert-info">
+  			<%= flash.alert %>
+    		<button type="button" class="close" data-dismiss="alert">×
+  		</div>
+	<% end %>
+
 	<nav class="bh_nav col-sm-3">
 		<h3>Thông tin tài khoản</h3>
 		<ul>
 			<li><a href="">Thông tin chung</a></li>
 		</ul>
 	</nav>
+	
 	<div class="col-sm-9" id="user_main_content">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
@@ -27,13 +37,13 @@
 				  	<div class="form-group">
 				    	<label for="fullname" class="col-sm-3 control-label">Full name</label>
 				    	<div class="col-sm-9">
-					      	<input type="text" class="form-control" id="fullname" value="<%= @user.fullname %>">
+					      	<input type="text" class="form-control" id="fullname" value="<%= @user.fullname %>" name="user[fullname]">
 					    </div>
 				  	</div>
 				  	<div class="form-group">
 				    	<label for="address" class="col-sm-3 control-label">Address</label>
 				    	<div class="col-sm-9">
-					      	<input type="text" class="form-control" id="address" value="<%= @user.address %>">
+					      	<input type="text" class="form-control" id="address" value="<%= @user.address %>" name="user[address]">
 					    </div>
 				  	</div>
 				  	<div class="form-group">
