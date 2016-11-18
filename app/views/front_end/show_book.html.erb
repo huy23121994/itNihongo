@@ -8,7 +8,7 @@
 	<div class="col-sm-12" id="show_book_main_content">
 	    <div class="row">
 	    	<div class="col-sm-5 book_img text-center">
-	    		<img src="<%= @book.img_path.url %>" class="full_width">
+	    		<img src="<%= @book.img_path.url %>" width="330">
 	    	</div>
 	    	<div class="col-sm-7">
 	    		<h3 class="text-capitalize"><%= @book.title %></h3>
@@ -41,19 +41,19 @@
 	    </div>
 
 	    <div class="row book_comment">
-	    	<h3>Review</h3>
-	    	<div class="text-right">
+	    	<h4>Để lại lời nhận xét của bạn</h4>
+	    	<div class="text-left">
 	    		<% if signed_in? %>
 		    		<%= form_for(@review, remote: true) do |f| %>
 						<div class="field">
-							<%= f.text_area :content, placeholder: "Review ...", id: 'review_content', class: "full_width" %>
+							<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "" %>
 							<div><%= hidden_field_tag :book_id, @book.id %></div>
 						</div>
-						<%= f.submit "Reivew", class: "btn btn-success" %>
+						<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" %>
 					<% end %>
 				<% end %>
 	    	</div>
-	    	<ul class="list_comment">
+	    	<ul class="list_reviews">
 			    <% if @book.reviews.any? %>
 			        <%= render @reviews %>
 			      	<%= will_paginate @reviews %>

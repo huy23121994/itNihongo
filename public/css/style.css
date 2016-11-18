@@ -9,8 +9,8 @@ ul{
     background-color: #fff;
 }
 body{
-    min-height: calc(100vh - 20px);
-    position: relative;
+    /*min-height: calc(100vh - 20px);*/
+    /*position: relative;*/
 }
 header.main_header{
     height: 60px;
@@ -44,10 +44,12 @@ header.main_header .search input{
 header.main_header .login{
     margin-top: 7px
 }
-/*footer{
-    position: absolute;
-    bottom: 0;
-}*/
+section.container{
+    min-height: calc(100vh - 484px);
+}
+footer{
+    margin-top: 50px;
+}
 .breadcrumb_top{
     background-color: #fff;
     padding-left: 0;
@@ -111,13 +113,14 @@ header.main_header .login{
     border: 1px solid #ddd;
     height: 100px;
     resize: none;
+    margin-bottom: 10px;
 }
-#show_book_main_content ul.list_comment > li{
-    padding-top: 10px;
-    padding-bottom: 10px;
+#show_book_main_content ul.list_reviews > li{
+    padding-top: 30px;
+    padding-bottom: 30px;
     border-bottom: 1px solid #ddd;
 }
-#show_book_main_content ul.list_comment .row{
+#show_book_main_content ul.list_reviews .row{
     margin-left: 0;
     margin-right: 0;
 }
@@ -153,7 +156,7 @@ header.main_header .login{
     position: absolute;
     margin-top: -20px;
 }
-.comment_content pre {
+.review_content pre {
     white-space: pre-line;
     font-family: inherit;
     padding: 0;
@@ -162,25 +165,69 @@ header.main_header .login{
     background-color: #fff;
     border: none;
     margin: 0;
+    line-height: 23px;
 }
-.comment_content .timestamp{
+.text-f-uppercase:first-letter{
+    text-transform: uppercase;
+}
+.review_content {
+    border-left: 1px solid #ddd;
+}
+.review_content .reply_area{
+    border-top: 1px solid #ddd;
+    width: 150px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+.review_content .reply_area a{
+    font-size: 12px;
+    cursor: pointer;
+}
+.review_content .reply_area a:hover{
+    color: #05b2e9;
+}
+.user_comment .timestamp{
     color: #a0a0a0;
     font-size: 13px;
 }
-.well {
-    background-color: #fff; 
-    border: 0;
+.user_comment p{
+    margin-top:10px;
+    margin-bottom: 0;
 }
-.list_comment {
+#comment_content{
+    border-radius: 4px;
+}
+.list_reviews {
     margin-top: 20px;
 }
 /*footer-height*/
 .footer_height{
     height: 300px;
     border-top: 1px;
-    padding-top: 5px;
+    padding-top: 30px;
     background: #E6E6E6;
 }
 .button_footer{
     margin-top: 10px;
+}
+.profile_img{
+    border-radius: 4px;
+}
+.book_comment input[type="submit"]{
+    background-color: #05b2e9;
+    border-color: #05b2e9;
+    border-radius: 0;
+}
+ul.list_comments>li:first-child{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+ul.list_comments>li{
+    margin-top: 15px;
+}
+ul.list_comments>li .timestamp{
+    float: left;
+    margin-left: 5px;
+    font-size: 11px;
 }

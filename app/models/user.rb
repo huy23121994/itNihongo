@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :comments
   has_many :books
-	validates :username, presence: true, length: { maximum: 50}
+	validates :username, presence: true, uniqueness: true, length: { maximum: 50}
 	validates :email, presence: true, uniqueness: true
 
 	has_secure_password

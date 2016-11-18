@@ -1,13 +1,20 @@
-<li id="comment-<%= comment.id %>" class = "list-unstyled" ">
-   <img src="/assets/img-a91a7fec655b1989b407263a043a93b2925cd07b860e83076e5b847651d46aa1.jpg" alt="..." class="img-circle profile_img" style="width: 45px;">
-  <span class="user"><%= comment.user.username %></span>
-  <span ><%= comment.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(comment.created_at) %> ago.
-    <% if signed_in? %>
-	    <% if current_user?(comment.user) || current_user?(comment.review.user)%>
-	        <%= link_to "delete", comment, method: :delete,data: { confirm: "You sure?" } ,remote:true %>
-	    <% end %>
-    <% end %>
-  </span>
+<li id="comment-<%= comment.id %>">
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object profile_img" src="/assets/img-a91a7fec655b1989b407263a043a93b2925cd07b860e83076e5b847651d46aa1.jpg" width="45">
+        </a>
+      </div>
+      <div class="media-body">
+        <h5 class="media-heading text-capitalize pull-left"><strong><%= comment.user.username %></strong></h5>
+        <span class="timestamp"> <%= time_ago_in_words(comment.created_at) %> ago</span>
+        <% if signed_in? %>
+    	    <% if current_user?(comment.user) || current_user?(comment.review.user)%>
+    	         <%= link_to raw("<i class='glyphicon glyphicon-trash'></i> Xóa"), comment, method: :delete,data: { confirm: "You sure?" },remote:true,class: "pull-right" %>
+    	    <% end %>
+        <% end %>
+        <div class="clearfix"></div>
+        <pre class="text-f-uppercase"><%= comment.content %></pre>
+      </div>
+    </div>
 </li>
