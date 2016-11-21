@@ -21,6 +21,8 @@
 
 # Igore image
 /public/uploads/book/img_path
+/public/uploads/user/avatar
+/public/uploads/tmp/
 
 # Ignore all files in /vendor/bundle/
 /vendor/bundle/*

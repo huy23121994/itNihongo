@@ -1,6 +1,6 @@
 <li class="row" id="review-<%= review.id %>">
     <div class="col-sm-2 user_comment text-center">
-        <img src="/assets/img-a91a7fec655b1989b407263a043a93b2925cd07b860e83076e5b847651d46aa1.jpg" class="profile_img" style="width: 60px;">
+        <img src="<%= review.user.avatar.url %>" class="profile_img" style="width: 60px;">
         <p class="text-capitalize"><strong><%= review.user.username %></strong></p>
         <span class="timestamp text-f-uppercase">
             <%= time_ago_in_words(review.created_at) %> ago

@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20161109061715) do
     t.string   "fullname"
     t.string   "address"
     t.integer  "role",            default: 0
+    t.string   "avatar"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :books
 	validates :username, presence: true, uniqueness: true, length: { maximum: 50}
 	validates :email, presence: true, uniqueness: true
-
+  mount_uploader :avatar, ImageUploader
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
   ratyrate_rater
