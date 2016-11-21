@@ -12,7 +12,9 @@
 		</div>
 		<div class="col-sm-3 login">
 			<div class="pull-left" style="margin-right:20px">
-				<img src="/img/avatar-s.png" width="40">
+				<% if signed_in? %>
+				<img src="<%= current_user.avatar.url %>" width="40">
+				<% end %>
 			</div>
 			<div style="padding-top:11px" class="pull-left">
 				<% if signed_in? %>

@@ -19,8 +19,19 @@
 	
 	<div class="col-sm-9" id="user_main_content">
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
-				<form class="form-horizontal" action="<%= profile_user_update_path %>" method="POST">
+		<form class="form-horizontal" action="<%= profile_user_update_path %>" method="POST" enctype="multipart/form-data">
+			<div class="col-sm-2 col-sm-offset-1">
+				<center class="form-group img_preview">
+			    	<div class="img">
+					    <img id="avatar_photo" src="<%= current_user.avatar.url %>" class="full_width book_img img-thumbnail">
+					    <br><br>
+				        <label class="btn btn-default" style="color: gray;">Upload Avatar
+							<input type="file" style="display: none;" class="file-loading" name="user[avatar]" accept="image/*" onchange="readURL(this);">
+				        </label>
+			        </div>
+				</center>
+			</div>
+			<div class="col-sm-7 col-sm-offset-0">
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				  	<div class="form-group">
 				    	<label for="gender" class="col-sm-3 control-label">User name</label>
@@ -50,17 +61,25 @@
 				    	<div class="col-sm-offset-3 col-sm-9">
 				      		<button type="submit" class="btn btn-primary" style="background-color:#05b2e9;border-color:#05b2e9">Update</button>
 				    	</div>
-				  	</div>
-				</form>
+				  	</div>	
 			</div>
+		</form>
 		</div>
 	</div>
 <% end %>
 
 <% content_for :add_js do %>
 	<script type="text/javascript">
-
-	</script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#avatar_photo').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 <% end %>
 
 <% extends_layout "front_end/layouts/master" %>
