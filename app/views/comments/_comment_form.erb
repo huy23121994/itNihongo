@@ -1,9 +1,6 @@
-<div class="form-inline" style="margin-top: 20px;">
+
 	<%= form_for(current_user.comments.build, remote: true) do |f| %>
-		<div class="form-group">
-	    	<%= f.text_field :content, class: 'form-control', id: 'comment_content' ,placeholder: "Compose new comment..." %>
-	    	<div><%= hidden_field_tag :review_id, review.id %></div>
-		</div>
-		<%= f.submit "Comment", class: "btn btn-default" %>
+	    <%= f.text_area :content, class: 'full_width', id: 'comment_content' ,placeholder: "Để lại lời nhận xét...", required: "" %>
+	    <%= hidden_field_tag :review_id, review.id %>
+		<%= f.submit "Gửi bình luận của bạn", class: "btn btn-primary" %>
 	<% end %>
-</dir>

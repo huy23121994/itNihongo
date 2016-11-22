@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
+
+  enum role: [:User, :Administrator]
+
 	has_many :posts
   has_many :reviews
   has_many :comments
   has_many :books
-	validates :username, presence: true, length: { maximum: 50}
+	validates :username, presence: true, uniqueness: true, length: { maximum: 50}
 	validates :email, presence: true, uniqueness: true
-
+  mount_uploader :avatar, ImageUploader
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
   ratyrate_rater
@@ -61,6 +64,6 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
   def is_admin?
-    role == 1 ? true : false
+    role == "Administrator" ? true : false
   end
 end

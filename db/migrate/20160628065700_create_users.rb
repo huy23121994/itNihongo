@@ -7,7 +7,8 @@ class CreateUsers < ActiveRecord::Migration
     		t.string :email
 	  		t.string :fullname
 	  		t.string :address
-	  		t.integer :role
+	  		t.integer :role, default: 0
+            t.string :avatar
     		t.timestamps null: false
     	end
   	end
