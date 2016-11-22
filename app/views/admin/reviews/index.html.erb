@@ -1,0 +1,91 @@
+<% provide(:title, "HTube | Admin") %>
+
+<% content_for :back_end_main do %>
+	<div class="right_col" role="main">
+ 
+	    <div class="">
+	        <div class="page-title">
+	            <div class="title_left">
+	                <h3>
+	                    Reviews
+	                </h3>
+	            </div>
+	        </div>
+	        <div class="clearfix"></div>
+	 
+	        <div class="row">
+	            <div class="col-sm-12">
+	                <div class="x_panel">
+	                    <div class="x_title">
+	                        <h2>All reviews</h2>
+	                        <ul class="nav navbar-right panel_toolbox">
+	                            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+	                        </ul>
+	                        <div class="clearfix"></div>
+	                    </div>
+	                    <div class="x_content">
+	                        <!-- content starts here -->
+	                            <div class="x_content">
+        						<!-- content starts here -->
+						        <table class="table table-striped" id="list-item" cellspacing="0" width="100%">
+							        <thead>
+							            <tr>
+							                <th>Content</th>
+							                <th>Review User</th>
+							                <th>Book</th>
+							                <th width="140px">Created Time</th>
+							            </tr>
+							        </thead>
+							        <tfoot>
+							            <tr>
+							                <th>Content</th>
+							                <th>Review User</th>
+							                <th>Book</th>
+							                <th>Created Time</th>
+							            </tr>
+							        </tfoot>
+							        <tbody style="text-transform: capitalize;">
+							        	<% @reviews.each do |review|%>
+									        <tr>
+									        	<td>
+									        		<a href="<%= admin_review_path(review) %>" class="text-success"><u><%=review.content.slice(0...50) %></u></a>
+									        	</td>
+									        	<td><%=review.user.username%></td>
+									        	<td><%=review.book.title%></td>
+									        	<td><%=review.created_at%></td>
+									        </tr>
+								        <% end %>
+							        </tbody>
+							    </table>
+						        <!-- content ends here -->
+						    </div>
+	                        <!-- content ends here -->
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<% end %>
+<% content_for :add_js do %>
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	    	//DataTable
+	    	$('#list-item').DataTable();
+	    	$('a[data-target=".delete_comfirm"]').click(function(){
+	    		$('a[data-method="delete"]').attr('href','/admin/categories/' + $(this).data('id'));
+	    	})
+	    	
+	    	<% if flash[:notice] %>
+				new PNotify({
+	              	title: 'Success',
+	              	text: '<%= flash[:notice] %>',
+	              	type: 'success',
+	              	delay: 2000,
+	              	styling: 'bootstrap3'
+	          	});
+          	<% end %>
+	    })
+	</script>
+<% end %>
+<% extends_layout "admin/layouts/master" %>
