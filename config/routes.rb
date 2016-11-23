@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :tags, path: 'tags'
     resources :posts, path: 'posts'
     resources :users, path: 'users', only: [:index, :create, :show, :edit, :update, :destroy]
+    resources :reviews, path: 'reviews', only: [:index, :show, :destroy]
   end
 
   get '/sign-up' => 'admin/users#new'

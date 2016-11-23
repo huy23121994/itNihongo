@@ -154,7 +154,10 @@ ActiveRecord::Schema.define(version: 20161109061715) do
     t.string   "fullname"
     t.string   "address"
     t.integer  "role",            default: 0
+<<<<<<< 1a389345a1303b57dde7928d2a26550f4761f9ea
     t.string   "avatar"
+=======
+>>>>>>> update comment interface
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
