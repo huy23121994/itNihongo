@@ -1,0 +1,87 @@
+<% provide(:title, "HTube | Admin") %>
+<% content_for :back_end_main do %>
+	<div class="right_col" role="main">
+ 
+	    <div class="">
+	        <div class="page-title">
+	            <div class="title_left">
+	                <h3>
+	                    Reviews
+	                </h3>
+	            </div>
+	        </div>
+	        <div class="clearfix"></div>
+	 
+	        <div class="row">
+	            <div class="col-sm-12">
+					<div class="x_panel">
+					    <div class="x_title">
+					        <h2><%= @review.book.title %></h2>
+					        <ul class="nav navbar-right panel_toolbox">
+					            <li class="pull-right"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+					        </ul>
+					        <div class="clearfix"></div>
+					    </div>
+					    <div class="x_content" id="book_content">
+					        <!-- content starts here -->
+						    	<div class="row">
+						    		<div class="col-sm-3">
+							    		<div class="form-group img_preview">
+								    		<label for="book_img">Bookjacket</label>
+								    		<div class="img">
+										        <img src="<%= @review.book.img_path.url.nil? ? '/img/demo.png' : @review.book.img_path.url %>" class="full_width book_img img-thumbnail">
+								        	</div>
+									    </div>
+							        </div>
+						    		<div class="col-sm-9">
+						    			<div class="form-group">
+										    <h4>Title</h4>
+										    <h3><%= @review.book.title%></h3>
+										</div>
+						    			<div class="form-group">
+										    <h4>Reviews User</h4>
+										    <h3><%= @review.user.username %></h3>
+										</div>	
+						    			<div class="form-group">
+										    <h4>Content</h4>
+										    <pre style="white-space: pre-line;font-family: inherit;padding: 0;font-size: inherit;word-break: break-word;background-color: #fff;border: none;margin: 0;">
+										    	<%= @review.content %>
+										    	
+										    </pre>
+										</div>
+						    			<div class="form-group">
+						    				<a type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target=".delete_comfirm"><i class="fa fa-trash"></i> Delete</a>
+										</div>
+						    		</div>
+						    	</div>
+					        <!-- content ends here -->
+					    </div>
+					</div>
+					<!-- MODAL DELETE CONFIRM -->
+					<div class="modal fade delete_comfirm" tabindex="-1" role="dialog" aria-hidden="true">
+					  <div class="modal-dialog modal-sm">
+					    <div class="modal-content">
+
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+					        </button>
+					        <h4 class="modal-title" id="myModalLabel2">Are you sure delete this?</h4>
+					      </div>
+					      <div class="modal-body text-center">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					        <a href="<%= admin_review_path(@review.id) %>" type="button" class="btn btn-success" data-method="delete">Yes, I'm sure</a>
+					      </div>
+
+					    </div>
+					  </div>
+					</div><!-- END MODAL -->
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<% end %>
+
+<% content_for :add_js do %>
+<% end %>
+
+<% extends_layout "admin/layouts/master" %>
