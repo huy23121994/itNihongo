@@ -9,7 +9,7 @@
     <div class="col-sm-10 review_content content">
         <pre class="text-f-uppercase"><%= review.content %></pre>
         <div class="reply_area">
-            <a data-toggle="collapse" data-target="#<%= review.id%>" aria-expanded="false" aria-controls="collapseExample">Gửi trả lời </a>| 
+            <a data-toggle="collapse" data-target="#<%= review.id%>" aria-expanded="false" aria-controls="collapseExample">Bình luận </a>
             <% if current_user?(review.user) %>
                 <%= link_to "Xóa", review, method: :delete,data: { confirm: "You sure?" } ,remote:true %>
             <% end %>

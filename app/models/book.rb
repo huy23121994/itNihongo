@@ -11,6 +11,8 @@ class Book < ActiveRecord::Base
 	searchkick autocomplete: ['title','author']
 	
 	ratyrate_rateable "quality"
+	scope :with_ratings, ->{includes(:rate_average_without_dimension).order("rating_caches.avg desc")}
+	
 	def self.get_all_books()
 		Book.all.order(created_at: :desc)
 	end

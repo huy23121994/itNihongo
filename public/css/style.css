@@ -41,6 +41,13 @@ header.main_header .search input{
     outline: none;
     margin-top: -8px;
 }
+
+@media only screen and (max-width : 1000px){
+    header.main_header .search input{
+        width: 390px;
+    }
+}
+
 header.main_header .login{
     margin-top: 7px
 }
@@ -108,7 +115,7 @@ footer{
     padding-bottom: 10px;
     margin-top: 30px;
 }
-#show_book_main_content > .book_comment form textarea{
+#show_book_main_content > .book_comment textarea{
     padding: 5px;
     border: 1px solid #ddd;
     height: 100px;
@@ -182,6 +189,12 @@ footer{
 .review_content .reply_area a{
     font-size: 12px;
     cursor: pointer;
+    display: inline-block;
+    padding-right: 10px;
+}
+.review_content .reply_area a:not(:first-child){
+    padding-left: 10px;
+    border-left: 1px solid #ddd;
 }
 .review_content .reply_area a:hover{
     color: #05b2e9;

@@ -23,9 +23,9 @@
 			    <% else %>
 			    	<div>
 			    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
-			    			<div>
-			    				<a class="rate" href="<%= sign_in_path %>" data-no-turbolink></a>
-			    			</div>
+		    			<div>
+		    				<a class="rate" href="#" data-toggle="modal" data-target=".modal"></a>
+		    			</div>
 			    	</div>
 			    <% end %>
 	    		<% unless @book.average("quality").nil? %>
@@ -51,6 +51,9 @@
 						</div>
 						<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" %>
 					<% end %>
+				<% else %>
+					<textarea class="full_width"  placeholder="Để lại lời nhận xét ..."></textarea>
+					<input type="submit" class="btn btn-primary" value="Gửi lời nhận xét của bạn" data-toggle="modal" data-target=".modal"/>
 				<% end %>
 	    	</div>
 	    	<ul class="list_reviews">
@@ -61,23 +64,33 @@
 	    	</ul>
 	    </div>
 	</div>
+	<!-- MODAL -->
+	<div class="modal fade" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Thông báo</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Bạn phải đăng nhập để sử dụng chức năng này</p>
+	        <p><a href="<%= sign_in_path %>" data-no-turbolink>Đăng nhập</a> ngay</p>
+	      </div>
+	      <div class="modal-footer text-center">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 <% end %>
 
 <% content_for :add_js do %>
 	<script type="text/javascript">
-
-	</script>
-	<script>
-	$(document).ready(function(){
-	    $(".rate").click(function(){
-	        var r = confirm("You must login!");
-	        if (r) {
-	            return true;
-	        } else {
-	            return false;
-	        } 
-	    });
-	});
+		$(document).ready(function(){
+		    // $(".require_login").click(function(){
+		    	// $('.modal').modal('show');
+		    // })
+		});
 	</script>
 <% end %>
 
