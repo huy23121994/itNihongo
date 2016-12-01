@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 
     return user
   end
+  
+  def reviewed?(book_id)
+    Review.find_by({ :book_id => book_id , :user_id => self.id})
+  end
 
   # Returns the hash digest of the given string.
   def User.digest(string)
