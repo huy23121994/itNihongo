@@ -42,7 +42,7 @@ header.main_header .search input{
     margin-top: -8px;
 }
 
-@media only screen and (max-width : 1000px){
+@media only screen and (max-width : 1200px){
     header.main_header .search input{
         width: 390px;
     }
@@ -182,7 +182,7 @@ footer{
 }
 .review_content .reply_area{
     border-top: 1px solid #ddd;
-    width: 150px;
+    width: 245px;
     margin-top: 5px;
     padding-top: 5px;
 }
@@ -226,9 +226,14 @@ footer{
 .profile_img{
     border-radius: 4px;
 }
-.book_comment input[type="submit"]{
+.book_comment input[type="submit"], .book_comment button[type="submit"]{
     background-color: #05b2e9;
     border-color: #05b2e9;
+    border-radius: 0;
+}
+.btn.btn-danger{
+    background-color: #dc7976;
+    border-color: #e07672;
     border-radius: 0;
 }
 ul.list_comments>li:first-child{

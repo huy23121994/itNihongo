@@ -14,6 +14,20 @@ class ReviewsController < ApplicationController
 	      redirect_to book_path(@book.slug)
 	    end
 	end
+	
+	def update
+		@book = Book.find(params[:book_id])
+		@review = Review.find(params[:id])
+		@review.content = review_params[:content]
+	    if @review.save
+	      	respond_to do |format|
+		        format.html { redirect_to book_path(@book.slug) }
+		        format.js
+		    end
+	    else
+	      redirect_to book_path(@book.slug)
+	    end
+	end
 
 	def destroy
 		@review= Review.find(params[:id])

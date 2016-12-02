@@ -30,6 +30,6 @@ Rails.application.routes.draw do
   post 'profile/update' => 'user#update_user', as: 'profile_user_update'
 
   resources :comments,          only: [:create, :destroy]
-  resources :reviews,          only: [:create, :destroy]
+  resources :reviews,          only: [:create, :destroy, :update]
   # resources :books, only: [:index, :show]
 end

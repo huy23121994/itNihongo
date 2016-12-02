@@ -1,0 +1,10 @@
+/*
+*
+*   Author @BaoHuyBaoHuy
+*
+*/
+
+var submit_value = $('#edit_review textarea').val();
+$('#edit_review').hide();
+$('#edit_review').siblings('pre').html(submit_value).show();
+$('#edit_review button[type="submit"]').removeAttr('disabled').html('Cập nhật');

@@ -33,7 +33,7 @@
 				<% end %>
 				<p>
 					<br>
-					<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.original_url %>&layout=button&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+					<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.original_url %>&layout=button&mobile_iframe=true&width=59&height=20&appId" width="70" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 					<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=i&url=<%= request.original_url %>&related=twitterapi%2Ctwitter" width="80" height="20" style="border: none; overflow: hidden;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 				</p>
 	    		<div class="book_description">
@@ -60,7 +60,7 @@
 					<% else %>
 						<%= form_for(@review, remote: true) do |f| %>
 							<div class="field">
-								<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
+								<%= f.text_area :content, placeholder: "Chỉ được viết review 1 lần thôi thím, đừng cố...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
 								<div><%= hidden_field_tag :book_id, @book.id %></div>
 							</div>
 							<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" , id: 'review_submit' , disabled: ''%>
@@ -102,9 +102,23 @@
 <% content_for :add_js do %>
 	<script type="text/javascript">
 		$(document).ready(function(){
-		    // $(".require_login").click(function(){
-		    	// $('.modal').modal('show');
-		    // })
+		    $('body').on('click','.edit_review_button', function () {
+		    	var selector = $('#edit_review');
+		    	if(selector.is(':visible')){
+		    		selector.hide();
+			  		selector.siblings('pre').show();
+		    	}else{
+				  	selector.show();
+				  	selector.siblings('pre').hide();
+		    	}
+			})
+		    $('body').on('click','.edit_review_cancle', function () {
+		    	$('#edit_review').hide();
+		  		$('#edit_review').siblings('pre').show();
+			})
+		    $('body').on('submit','form.edit_review', function () {
+		    	$('#edit_review button[type="submit"]').attr('disabled','disabled').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Đang xử lý...');
+			})
 		});
 	</script>
 <% end %>
