@@ -31,6 +31,11 @@
 	    		<% unless @book.average("quality").nil? %>
 					(<%= @book.average("quality").avg %>)
 				<% end %>
+				<p>
+					<br>
+					<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.original_url %>&layout=button&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+					<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=i&url=<%= request.original_url %>&related=twitterapi%2Ctwitter" width="80" height="20" style="border: none; overflow: hidden;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+				</p>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
 	    			<pre>
