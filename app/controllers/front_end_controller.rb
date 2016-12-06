@@ -41,8 +41,20 @@ class FrontEndController < ApplicationController
   def search_book
   	@books = Book.search params[:query]
     @category = 'Danh sách tìm kiếm'
-    # abort @books.inspect
     render 'list_books'
+  end
+  
+  def check_in_book
+    if params[:type] == 'create'
+      UserBook.create('user_id'=>current_user.id , 'book_id'=>params[:book_id])
+    else
+      userbook = UserBook.find_by({ :book_id => params[:book_id] , :user_id => current_user.id})
+      userbook.delete
+    end
+    @check_in_book_type = params[:type]
+    respond_to do |format|
+	      format.js { render 'front_end/js/check_in_book' }
+	    end
   end
 
   def autocomplete

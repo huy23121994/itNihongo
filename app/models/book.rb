@@ -3,8 +3,13 @@ class Book < ActiveRecord::Base
 
 	has_many :categories, :through => :categories_books
 	has_many :categories_books, dependent: :destroy
+	
 	has_many :tags, :through => :tags_books
 	has_many :tags_books, dependent: :destroy
+	
+	has_many :users, :through => :user_book
+	has_many :user_book, dependent: :destroy
+	
 	has_many :reviews
 
 	mount_uploader :img_path, ImageUploader
