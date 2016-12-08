@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :comments
   has_many :books
+  has_many :books, :through => :user_book
+	has_many :user_book, dependent: :destroy
+	
 	validates :username, presence: true, uniqueness: true, length: { maximum: 50}
 	validates :email, presence: true, uniqueness: true
   mount_uploader :avatar, ImageUploader
@@ -37,6 +40,10 @@ class User < ActiveRecord::Base
   
   def reviewed?(book_id)
     Review.find_by({ :book_id => book_id , :user_id => self.id})
+  end
+  
+  def read_book?(book_id)
+    UserBook.find_by({ :book_id => book_id , :user_id => self.id})
   end
 
   # Returns the hash digest of the given string.

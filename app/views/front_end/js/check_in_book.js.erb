@@ -1,0 +1,13 @@
+var read_book_type = '<%= @check_in_book_type %>';
+
+$('#check_in_book_form').find('button').removeAttr('disabled');
+if (read_book_type == 'create') {
+    $('#check_in_book_create').html('<i class="glyphicon glyphicon-ok"></i> Đã đọc');
+    $('#check_in_book_create').attr('id','check_in_book_delete');
+    $('#type').val('delete');
+}else{
+    $('#check_in_book_delete').html('<i class="glyphicon glyphicon-hand-right"></i> Check in ngay')
+    $('#check_in_book_delete').attr('id','check_in_book_create');
+    $('#type').val('create');
+}
+$('#check_in_book_form').find('i.fa-spinner').hide();

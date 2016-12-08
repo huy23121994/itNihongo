@@ -18,24 +18,37 @@
 		    			<a href="<%= category_path(category.slug) %>"><%= category.category %></a>
 		    		<% end %>
 	    		</strong></p>
-			   	<% if signed_in? %>
-			    	Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
-			    <% else %>
-			    	<div>
-			    		Rate for user  <%= rating_for @book, 'quality', disable_after_rate: false, enable_half: true %>
+		    	<div>
+		    		<%= rating_for @book, 'quality', star: 5, disable_after_rate: false, enable_half: true,cancel_place: 'right' %>
+			    		
+				   	<% unless signed_in? %>
 		    			<div>
 		    				<a class="rate" href="#" data-toggle="modal" data-target=".modal"></a>
 		    			</div>
-			    	</div>
-			    <% end %>
-	    		<% unless @book.average("quality").nil? %>
-					(<%= @book.average("quality").avg %>)
+				    <% end %>
+		    	</div>
+	    		<% unless @book.rates("quality").nil? %>
+					(<%= @book.rates("quality").count %> ratings)
 				<% end %>
 				<p>
 					<br>
-					<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.original_url %>&layout=button&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+					<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= request.original_url %>&layout=button&mobile_iframe=true&width=59&height=20&appId" width="70" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 					<iframe src="https://platform.twitter.com/widgets/tweet_button.html?size=i&url=<%= request.original_url %>&related=twitterapi%2Ctwitter" width="80" height="20" style="border: none; overflow: hidden;" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 				</p>
+				<% if signed_in? %>
+					<%= form_tag(check_in_book_path, remote: true,id: 'check_in_book_form') do |f|%>
+						Bạn đã đọc sách này chưa? 
+						<%= hidden_field_tag(:book_id, @book.id) %>
+						<% unless current_user.read_book?(@book.id)%>
+							<%= hidden_field_tag(:type, 'create') %>
+							<button type="submit" class="btn btn-default btn-xs" id="check_in_book_create"><i class="glyphicon glyphicon-hand-right"></i> Check in ngay</button>
+						<% else %>
+							<%= hidden_field_tag(:type, 'delete') %>
+							<button type="submit" class="btn btn-default btn-xs" id="check_in_book_delete"><i class="glyphicon glyphicon-ok"></i> Đã đọc</button>
+						<% end %>
+						<i class="fa fa-spinner fa-spin fa-fw" style="display:none"></i>
+					<% end %>
+				<% end %>
 	    		<div class="book_description">
 	    			<h4>Gioi thieu sach</h4>
 	    			<pre>
@@ -60,7 +73,7 @@
 					<% else %>
 						<%= form_for(@review, remote: true) do |f| %>
 							<div class="field">
-								<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
+								<%= f.text_area :content, placeholder: "Chỉ được viết review 1 lần thôi thím, đừng cố...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
 								<div><%= hidden_field_tag :book_id, @book.id %></div>
 							</div>
 							<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" , id: 'review_submit' , disabled: ''%>
@@ -101,11 +114,7 @@
 
 <% content_for :add_js do %>
 	<script type="text/javascript">
-		$(document).ready(function(){
-		    // $(".require_login").click(function(){
-		    	// $('.modal').modal('show');
-		    // })
-		});
+		
 	</script>
 <% end %>
 

@@ -1,1 +1,2 @@
 $("#comment-<%= @destroy_id%>").remove()
+$("#review-<%= @review.id %> .reply_area a:first-child").html('Bình luận (<%= @review.comments.count %>)')

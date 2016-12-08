@@ -25,11 +25,12 @@ Rails.application.routes.draw do
   get 'books' => 'front_end#all_book', as: 'books'
   get 'book/autocomplete' => 'front_end#autocomplete', as: 'autocomplete'
   get 'book/search_book' => 'front_end#search_book', as: 'search_book'
+  post 'book/check_in_book' => 'front_end#check_in_book', as: 'check_in_book'
 
   get 'profile' => 'user#show_user', as: 'profile_user'
   post 'profile/update' => 'user#update_user', as: 'profile_user_update'
 
   resources :comments,          only: [:create, :destroy]
-  resources :reviews,          only: [:create, :destroy]
+  resources :reviews,          only: [:create, :destroy, :update]
   # resources :books, only: [:index, :show]
 end
