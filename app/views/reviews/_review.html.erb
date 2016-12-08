@@ -8,18 +8,17 @@
     </div>
     <div class="col-sm-10 review_content content">
         <pre class="text-f-uppercase"><%= review.content %></pre>
-        <div id="edit_review" style="display:none">
-            <%= form_for(review, remote: true) do |f| %>
-    			<div class="field">
-    				<%= f.text_area :content, value: review.content, id: 'review_content', class: "full_width", required: "" %>
-    				<div><%= hidden_field_tag :book_id, @book.id %></div>
-    			</div>
-    			<button type="submit" id="review_submit" class="btn btn-primary">Cập nhật</button>
-    			<a class="btn btn-danger edit_review_cancle">Hủy</a>
-    		<% end %>
-        </div>
         <% if current_user?(review.user) %>
-            
+            <div id="edit_review" style="display:none">
+                <%= form_for(review, remote: true) do |f| %>
+        			<div class="field">
+        				<%= f.text_area :content, value: review.content, id: 'review_content', class: "full_width", required: "", 'spell-check': false %>
+        				<div><%= hidden_field_tag :book_id, @book.id %></div>
+        			</div>
+        			<button type="submit" id="review_submit" class="btn btn-primary">Cập nhật</button>
+        			<a class="btn btn-danger edit_review_cancle">Hủy</a>
+        		<% end %>
+            </div>
 		<% end %>
         <div class="reply_area">
             <a data-toggle="collapse" data-target="#<%= review.id%>" aria-expanded="false" aria-controls="collapseExample">Bình luận (<%= review.comments.count %>)</a>

@@ -32,4 +32,19 @@ $(document).ready(function(){
     	$(this).find('button').attr('disabled','disabled');
     	$(this).find('i.fa-spinner').show();
     })
+    $.each($('textarea[data-autoresize]'), function() {
+	    var offset = this.offsetHeight - this.clientHeight,
+	    	height_default = this.offsetHeight;
+	    var resizeTextarea = function(el) {
+			if( !$.trim($(el).val()) ){
+				
+	    	console.log(!$.trim($(el).val()));
+				$(el).css({'height': height_default});
+				console.log($(el));
+			}
+	        $(el).css('height', el.scrollHeight + offset);
+	    };
+	    $(this).on('focusout',function(){ resizeTextarea(this); });
+	    $(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+	});
 });
