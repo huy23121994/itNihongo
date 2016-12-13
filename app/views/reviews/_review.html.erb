@@ -1,7 +1,11 @@
 <li class="row" id="review-<%= review.id %>">
     <div class="col-sm-2 user_comment text-center">
-        <img src="<%= review.user.avatar.url %>" class="profile_img" style="width: 60px;">
-        <p class="text-capitalize"><strong><%= review.user.username %></strong></p>
+        <a href="<%= user_path(review.user.username) %>">
+            <img src="<%= review.user.avatar.thumb.url %>" class="profile_img" width="60" height="60">
+        </a>
+        <a href="<%= user_path(review.user.username) %>" color="#444"> 
+            <p class="text-capitalize"><strong><%= review.user.username %></strong></p>
+        </a>
         <span class="timestamp text-f-uppercase">
             <%= time_ago_in_words(review.created_at) %> ago
         </span>

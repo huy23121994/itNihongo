@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
 	has_many :reviews
 
 	mount_uploader :img_path, ImageUploader
-	searchkick autocomplete: ['title','author']
+	# searchkick autocomplete: ['title','author']
 	
 	ratyrate_rateable "quality"
 	scope :with_ratings, ->{includes(:rate_average_without_dimension).order("rating_caches.avg desc")}

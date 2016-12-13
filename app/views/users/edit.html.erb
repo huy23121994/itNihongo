@@ -10,17 +10,12 @@
   		</div>
 	<% end %>
 
-	<nav class="bh_nav col-sm-3">
-		<h3>Thông tin tài khoản</h3>
-		<ul>
-			<li><a href="">Thông tin chung</a></li>
-			<li><a href="">Sách đã đọc</a></li>
-		</ul>
-	</nav>
+	<%= render 'users/nav' %>
 	
 	<div class="col-sm-9" id="user_main_content">
 		<div class="row">
-		<form class="form-horizontal" action="<%= profile_user_update_path %>" method="POST" enctype="multipart/form-data">
+		<%= form_for @user, html:{:class => 'form-horizontal'} do |f|%>
+		    
 			<div class="col-sm-2 col-sm-offset-1">
 				<center class="form-group img_preview">
 			    	<div class="img">
@@ -28,6 +23,7 @@
 					    <br><br>
 				        <label class="btn btn-default" style="color: gray;">Upload Avatar
 							<input type="file" style="display: none;" class="file-loading" name="user[avatar]" accept="image/*" onchange="readURL(this);">
+							<%= f.file_field :avatar, class: 'hide file-loading', accept: 'image/*', onchange: 'readURL(this)'%>
 				        </label>
 			        </div>
 				</center>
@@ -64,7 +60,7 @@
 				    	</div>
 				  	</div>	
 			</div>
-		</form>
+		<% end %>
 		</div>
 	</div>
 <% end %>

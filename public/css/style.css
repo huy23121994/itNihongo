@@ -215,7 +215,7 @@ footer{
 }
 /*footer-height*/
 .footer_height{
-    height: 300px;
+    padding-bottom: 30px;
     border-top: 1px;
     padding-top: 30px;
     background: #E6E6E6;
@@ -248,4 +248,12 @@ ul.list_comments>li .timestamp{
     float: left;
     margin-left: 5px;
     font-size: 11px;
+}
+#user_main_content .table > tbody > tr > td{
+    vertical-align:baseline;
+}
+@media only screen and (max-width: 992px){
+    header.main_header .search input {
+        width: 290px;
+    }
 }

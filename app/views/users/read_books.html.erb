@@ -1,0 +1,41 @@
+<% provide(:title, @user.username) %>
+
+<% content_for :front_end_main do %>
+
+	<% if flash.alert %>
+		<br>
+  		<div class="alert alert-block alert-info">
+  			<%= flash.alert %>
+    		<button type="button" class="close" data-dismiss="alert">×
+  		</div>
+	<% end %>
+
+	<%= render 'users/nav' %>
+	
+	<div class="col-sm-9" id="user_main_content">
+	    <% if @books.empty? %>
+	        Không có sách nào để hiển thị
+	    <% else %>
+    		<table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Bìa</th>
+                        <th>Tên sách</th>
+                        <th>Tác giả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @books.each do |book| %>
+                    <tr>
+                        <td><a href="<%= book_path(book.slug) %>"><img src="<%= book.img_path.thumb.url %>"></a></td>
+                        <td><a href="<%= book_path(book.slug) %>"><%= book.title %></a></td>
+                        <td><%= book.author %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+	</div>
+<% end %>
+
+<% extends_layout "front_end/layouts/master" %>
