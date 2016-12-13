@@ -3,7 +3,7 @@
 	<%= stylesheet_link_tag 'nprogress' %>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<style type="text/css">
-		.tt-dropdown-menu {
+		/*.tt-dropdown-menu {
 			border: 1px solid #ddd;
 			width: calc(100% + 5px);
 			background-color: #fff;
@@ -20,7 +20,7 @@
 		.tt-suggestion:hover{
 			background-color: #05b2e9;
 			color: #fff
-		}
+		}*/
 	</style>
 <% end %>
 
@@ -41,16 +41,26 @@
 <% content_for :add_js do %>
 	<%= javascript_include_tag 'nprogress'%>
 	<script type="text/javascript" src="/js/front_end.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+	<script type="text/javascript" src="/js/typeahead.bundle.v0.11.1.js"></script>
 	<script type="text/javascript">
+		var books = new Bloodhound({
+		  	datumTokenizer: Bloodhound.tokenizers.whitespace,
+		  	queryTokenizer: Bloodhound.tokenizers.whitespace,
+		  	remote: {
+		    	url: '/book/autocomplete?query=%QUERY',
+		    	wildcard: '%QUERY'
+		  	}
+		});
+
 		$('#book_search').typeahead({
-			highlight: true,
-			classNames: {
-			    input: 'Typeahead-input',
-			    hint: 'Typeahead-hint',
-			    selectable: 'Typeahead-selectable'
+			  hint: true,
+			  highlight: true,
+			  minLength: 1
 			},
-		    remote: "/book/autocomplete?query=%QUERY"
-		})
+			{
+			  name: 'books',
+			  source: books
+		});
+
 	</script>
 <% end %>
