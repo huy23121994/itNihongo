@@ -58,7 +58,8 @@ class FrontEndController < ApplicationController
   end
 
   def autocomplete
-    render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
+    render json: Book.search_title(params[:query])
+    # render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 
   private

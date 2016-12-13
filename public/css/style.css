@@ -224,6 +224,9 @@ footer{
 .tt-suggestion p {
   margin: 0;
 }
+.tt-highlight{
+    color: #05b2e9;
+}
 /***************** END TYPEAHEAD CSS *****************/
 .rate {
     width: 100%;
