@@ -137,7 +137,7 @@ footer{
 }
 
 /****************  TYPEAHEAD CSS  **********************/
-.tt-dropdown-menu {
+/*.tt-dropdown-menu {
     border: 1px solid #ddd;
     width: calc(100% + 5px);
     background-color: #fff;
@@ -154,6 +154,103 @@ footer{
 .tt-is-under-cursor{
     background-color: #05b2e9!important;
     color: #fff
+}*/
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 396px;
+  height: 30px;
+  padding: 8px 12px;
+  font-size: inherit;
+  line-height: 30px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  outline: none;
+}
+
+.typeahead {
+  background-color: #fff;
+}
+
+.typeahead:focus {
+  border: 2px solid #0097cf;
+}
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {
+  width: calc(100% + 4px);
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.tt-menu .empty-message{
+    margin-left: 11px;
+    font-size: 17px;
+    color: #ababab;
+}
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 16px;
+  line-height: 24px;
+  color: inherit;
+  display: block;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+.tt-suggestion:hover .tt-highlight{
+    color: #fff;
+}
+.tt-dataset-books .tt-suggestion img{
+    float: left;
+}
+.tt-dataset-books .tt-suggestion p{
+    float: left;
+    margin-left: 10px;
+}
+.tt-dataset-books .tt-suggestion div{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+}
+.tt-dataset-books .tt-suggestion:after,.tt-dataset-books .tt-suggestion div:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+.tt-highlight{
+    color: #05b2e9;
 }
 /***************** END TYPEAHEAD CSS *****************/
 .rate {
@@ -215,7 +312,7 @@ footer{
 }
 /*footer-height*/
 .footer_height{
-    height: 300px;
+    padding-bottom: 30px;
     border-top: 1px;
     padding-top: 30px;
     background: #E6E6E6;
@@ -248,4 +345,12 @@ ul.list_comments>li .timestamp{
     float: left;
     margin-left: 5px;
     font-size: 11px;
+}
+#user_main_content .table > tbody > tr > td{
+    vertical-align:baseline;
+}
+@media only screen and (max-width: 992px){
+    header.main_header .search input {
+        width: 290px;
+    }
 }

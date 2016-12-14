@@ -1,0 +1,10 @@
+<nav class="bh_nav col-sm-3">
+	<h3>Thông tin tài khoản</h3>
+	<ul>
+		<li><a href="<%= user_path(@user.username) %>">Thông tin chung</a></li>
+		<% if @user.id == current_user.id %>
+    		<li><a href="<%= edit_user_path(@user.username) %>">Cập nhật thông tin cá nhân</a></li>
+		<% end %>
+		<li><a href="<%= read_books_user_path(@user.username) %>">Sách đã đọc</a></li>
+	</ul>
+</nav>

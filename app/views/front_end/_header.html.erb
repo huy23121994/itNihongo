@@ -6,16 +6,15 @@
 			</a>
 		</div>
 		<div class="col-sm-6 search">
-			<form method="GET" action="<%= search_book_path %>">
-				<%= csrf_meta_tags %>
-				<input type="text" name="query" placeholder="Search" id="book_search">
+			<%= form_tag(search_book_path, method: "GET") do %>
+				<input type="text" name="query" placeholder="Search" id="book_search" />
 				<button type="submit">TÌM</button>
-			</form>
+			<% end %>
 		</div>
 		<div class="col-sm-3 login">
-			<div class="pull-left" style="margin-right:20px">
+			<div class="pull-left hidden-sm" style="margin-right:20px">
 				<% if signed_in? %>
-				<img src="<%= current_user.avatar.url %>" width="40">
+				<img src="<%= current_user.avatar.thumb.url %>" width="40" height="40">
 				<% end %>
 			</div>
 			<div style="padding-top:11px" class="pull-left">
@@ -26,7 +25,7 @@
 						    <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="dLabel">
-						    <li><a href="<%= profile_user_path %>" class="text-capitalize">Trang cá nhân</a></li>
+						    <li><a href="<%= edit_user_path(current_user.username) %>" class="text-capitalize">Trang cá nhân</a></li>
 						    <% if current_user.is_admin? %>
 						    	<li><a href="<%= admin_path %>" data-no-turbolink>Bảng điều khiển</a></li>
 						    <% end %>

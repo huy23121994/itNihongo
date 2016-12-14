@@ -32,4 +32,46 @@ $(document).ready(function(){
     	$(this).find('button').attr('disabled','disabled');
     	$(this).find('i.fa-spinner').show();
     })
+    $.each($('textarea[data-autoresize]'), function() {
+	    var offset = this.offsetHeight - this.clientHeight,
+	    	height_default = this.offsetHeight;
+	    var resizeTextarea = function(el) {
+			if( !$.trim($(el).val()) ){
+				
+	    	console.log(!$.trim($(el).val()));
+				$(el).css({'height': height_default});
+				console.log($(el));
+			}
+	        $(el).css('height', el.scrollHeight + offset);
+	    };
+	    $(this).on('focusout',function(){ resizeTextarea(this); });
+	    $(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+	});
+	var books = new Bloodhound({
+	  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+	  	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  	remote: {
+	    	url: '/book/autocomplete?query=%QUERY',
+	    	wildcard: '%QUERY'
+	  	}
+	});
+
+	$('#book_search').typeahead({
+		  // hint: true,
+		  highlight: true,
+		  // minLength: 1,
+		},
+		{
+		  name: 'books',
+		  display: 'title',
+		  source: books,
+		  templates: {
+		  	empty: [
+		      '<div class="empty-message">',
+		        'Không tìm thấy gợi ý nào',
+		      '</div>'
+		    ].join('\n'),
+		    suggestion: Handlebars.compile('<a href="{{url}}"><div><img src="{{thumb_img}}" width="25" /><p>{{title}}</p></div></a>')
+		  }
+	});
 });

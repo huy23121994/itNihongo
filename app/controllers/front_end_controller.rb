@@ -11,6 +11,7 @@ class FrontEndController < ApplicationController
   	# @books = custom_paginate(category.books)
     @books = category.books
     @category = category.category
+    @category_id = category.id
   	render 'list_books'
   end
 
@@ -39,7 +40,10 @@ class FrontEndController < ApplicationController
   end
 
   def search_book
-  	@books = Book.search params[:query]
+  	@books = Book.search_title(params[:query])
+  	if params[:category] != ''
+  	  @books = Book.joins("JOIN categories_books ON categories_books.book_id = books.id AND categories_books.category_id = " + params[:category]).where('title LIKE ?', "%#{params[:query]}%")
+  	end
     @category = 'Danh sách tìm kiếm'
     render 'list_books'
   end
@@ -53,12 +57,15 @@ class FrontEndController < ApplicationController
     end
     @check_in_book_type = params[:type]
     respond_to do |format|
-	      format.js { render 'front_end/js/check_in_book' }
-	    end
+      format.js { render 'front_end/js/check_in_book' }
+    end
   end
 
   def autocomplete
-    render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
+    books = Book.search_title(params[:query])
+    results = books.map { |e| {:title => e.title,:url => book_path(e.slug) , :thumb_img => e.img_path.thumb.url} }
+    render json: results
+    # render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 
   private

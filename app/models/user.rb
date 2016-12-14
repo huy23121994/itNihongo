@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	
 	validates :username, presence: true, uniqueness: true, length: { maximum: 50}
 	validates :email, presence: true, uniqueness: true
-  mount_uploader :avatar, ImageUploader
+  mount_uploader :avatar, AvatarUploader
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
   ratyrate_rater

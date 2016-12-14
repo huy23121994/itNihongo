@@ -8,7 +8,7 @@
 	<div class="col-sm-12" id="show_book_main_content">
 	    <div class="row">
 	    	<div class="col-sm-5 book_img text-center">
-	    		<img src="<%= @book.img_path.url %>" width="330">
+	    		<img src="<%= @book.img_path.url %>" width="290">
 	    	</div>
 	    	<div class="col-sm-7">
 	    		<h3 class="text-capitalize"><%= @book.title %></h3>
@@ -65,7 +65,7 @@
 	    			<% unless current_user.reviewed?( @book.id ) %>
 			    		<%= form_for(@review, remote: true) do |f| %>
 							<div class="field">
-								<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "" %>
+								<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "",'data-autoresize':'', 'spellcheck': false %>
 								<div><%= hidden_field_tag :book_id, @book.id %></div>
 							</div>
 							<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" , id: 'review_submit' %>
@@ -73,7 +73,7 @@
 					<% else %>
 						<%= form_for(@review, remote: true) do |f| %>
 							<div class="field">
-								<%= f.text_area :content, placeholder: "Chỉ được viết review 1 lần thôi thím, đừng cố...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
+								<%= f.text_area :content, placeholder: "Để lại lời nhận xét ...", id: 'review_content', class: "full_width", required: "" , disabled: ""%>
 								<div><%= hidden_field_tag :book_id, @book.id %></div>
 							</div>
 							<%= f.submit "Gửi lời nhận xét của bạn", class: "btn btn-primary" , id: 'review_submit' , disabled: ''%>
