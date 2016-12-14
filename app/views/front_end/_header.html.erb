@@ -6,11 +6,10 @@
 			</a>
 		</div>
 		<div class="col-sm-6 search">
-			<form method="GET" action="<%= search_book_path %>">
-				<%= csrf_meta_tags %>
-				<input type="text" name="query" placeholder="Search" id="book_search">
+			<%= form_tag(search_book_path, method: "GET") do %>
+				<input type="text" name="query" placeholder="Search" id="book_search" />
 				<button type="submit">TÌM</button>
-			</form>
+			<% end %>
 		</div>
 		<div class="col-sm-3 login">
 			<div class="pull-left hidden-sm" style="margin-right:20px">

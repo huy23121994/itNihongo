@@ -2,26 +2,6 @@
 <% content_for :add_css do %>
 	<%= stylesheet_link_tag 'nprogress' %>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<style type="text/css">
-		/*.tt-dropdown-menu {
-			border: 1px solid #ddd;
-			width: calc(100% + 5px);
-			background-color: #fff;
-			border-radius: 0 0 4px 4px;
-			border-top: none;
-		}
-		.tt-dropdown-menu p{
-			margin: 0;
-		}
-		.tt-suggestion{
-			padding: 5px 8px;
-			background-color: #f4fcff;
-		}
-		.tt-suggestion:hover{
-			background-color: #05b2e9;
-			color: #fff
-		}*/
-	</style>
 <% end %>
 
 <% content_for :content do %>
@@ -42,9 +22,10 @@
 	<%= javascript_include_tag 'nprogress'%>
 	<script type="text/javascript" src="/js/front_end.js"></script>
 	<script type="text/javascript" src="/js/typeahead.bundle.v0.11.1.js"></script>
+	<script type="text/javascript" src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
 	<script type="text/javascript">
 		var books = new Bloodhound({
-		  	datumTokenizer: Bloodhound.tokenizers.whitespace,
+		  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
 		  	queryTokenizer: Bloodhound.tokenizers.whitespace,
 		  	remote: {
 		    	url: '/book/autocomplete?query=%QUERY',
@@ -53,13 +34,23 @@
 		});
 
 		$('#book_search').typeahead({
-			  hint: true,
+			  // hint: true,
 			  highlight: true,
-			  minLength: 1
+			  // minLength: 1,
+			  limit: 1,
 			},
 			{
 			  name: 'books',
-			  source: books
+			  display: 'title',
+			  source: books,
+			  templates: {
+			  	empty: [
+			      '<div class="empty-message">',
+			        'Không tìm thấy gợi ý nào',
+			      '</div>'
+			    ].join('\n'),
+			    suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
+			  }
 		});
 
 	</script>

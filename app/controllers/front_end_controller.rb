@@ -39,7 +39,7 @@ class FrontEndController < ApplicationController
   end
 
   def search_book
-  	@books = Book.search params[:query]
+  	@books = Book.search_title(params[:query])
     @category = 'Danh sách tìm kiếm'
     render 'list_books'
   end
@@ -53,12 +53,14 @@ class FrontEndController < ApplicationController
     end
     @check_in_book_type = params[:type]
     respond_to do |format|
-	      format.js { render 'front_end/js/check_in_book' }
-	    end
+      format.js { render 'front_end/js/check_in_book' }
+    end
   end
 
   def autocomplete
-    render json: Book.search_title(params[:query])
+    books = Book.search_title(params[:query])
+    results = books.map { |e| {:title => e.title,:url => book_path(e.slug)} }
+    render json: results
     # render json: Book.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 

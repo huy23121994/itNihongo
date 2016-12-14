@@ -58,6 +58,6 @@ class Book < ActiveRecord::Base
 	end
 
 	def self.search_title(book_title)
-		self.where('title LIKE ?', "%#{book_title}%").pluck(:title)
+		self.where('title LIKE ?', "%#{book_title}%")
 	end
 end

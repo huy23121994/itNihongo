@@ -202,11 +202,17 @@ footer{
      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
           box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
-
+.tt-menu .empty-message{
+    margin-left: 11px;
+    font-size: 17px;
+    color: #ababab;
+}
 .tt-suggestion {
   padding: 3px 20px;
   font-size: 18px;
   line-height: 24px;
+  color: inherit;
+  display: block;
 }
 
 .tt-suggestion:hover {
