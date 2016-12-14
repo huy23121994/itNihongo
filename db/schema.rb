@@ -153,10 +153,10 @@ ActiveRecord::Schema.define(version: 20161206092247) do
     t.string   "email"
     t.string   "fullname"
     t.string   "address"
-    t.integer  "role",            default: 0
+    t.integer  "role"
     t.string   "avatar"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users_books", force: :cascade do |t|
