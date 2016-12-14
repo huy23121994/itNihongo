@@ -22,36 +22,5 @@
 	<%= javascript_include_tag 'nprogress'%>
 	<script type="text/javascript" src="/js/front_end.js"></script>
 	<script type="text/javascript" src="/js/typeahead.bundle.v0.11.1.js"></script>
-	<script type="text/javascript" src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
-	<script type="text/javascript">
-		var books = new Bloodhound({
-		  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-		  	queryTokenizer: Bloodhound.tokenizers.whitespace,
-		  	remote: {
-		    	url: '/book/autocomplete?query=%QUERY',
-		    	wildcard: '%QUERY'
-		  	}
-		});
-
-		$('#book_search').typeahead({
-			  // hint: true,
-			  highlight: true,
-			  // minLength: 1,
-			  limit: 1,
-			},
-			{
-			  name: 'books',
-			  display: 'title',
-			  source: books,
-			  templates: {
-			  	empty: [
-			      '<div class="empty-message">',
-			        'Không tìm thấy gợi ý nào',
-			      '</div>'
-			    ].join('\n'),
-			    suggestion: Handlebars.compile('<a href="{{url}}">{{title}}</a>')
-			  }
-		});
-
-	</script>
+	<script type="text/javascript" src="/js/handlebars.js"></script>
 <% end %>

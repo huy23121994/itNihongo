@@ -11,6 +11,13 @@
 	    	<div class="col-sm-12 row_title_container">
 	    		<div class="row_title">
 		    		<h3 class="pull-left"><%= @category %></h3>
+		    		<% unless @category_id.nil? %>
+						<%= form_tag(search_book_path, method: "GET", class: 'pull-right') do %>
+							<input type="hidden" name="category" value="<%= @category_id %>" />
+							<input type="text" name="query" placeholder="Search" id="book_search" />
+							<button type="submit">Tìm kiếm</button>
+						<% end %>
+					<% end %>
 		    		<div class="clearfix"></div>
 	    		</div>
 	    	</div>
