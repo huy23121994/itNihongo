@@ -22,6 +22,9 @@ $(document).ready(function(){
     $('body').on('submit','form.edit_review', function () {
     	$('#edit_review button[type="submit"]').attr('disabled','disabled').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Đang xử lý...');
 	})
+    $('body').on('submit','form.new_review', function () {
+    	$('#review_submit').attr('disabled','disabled');
+	})
 	$('body').on('mouseenter','#check_in_book_delete',function(){
 		$(this).html('<i class="glyphicon glyphicon-remove"></i> Chưa đọc')
 	}).on('mouseleave','#check_in_book_delete',function(){
