@@ -41,8 +41,10 @@ class FrontEndController < ApplicationController
 
   def search_book
   	@books = Book.search_title(params[:query])
-  	if params[:category] != ''
-  	  @books = Book.joins("JOIN categories_books ON categories_books.book_id = books.id AND categories_books.category_id = " + params[:category]).where('title LIKE ?', "%#{params[:query]}%")
+  	unless params[:category].nil?
+    	if params[:category] != ''
+    	  @books = Book.joins("JOIN categories_books ON categories_books.book_id = books.id AND categories_books.category_id = " + params[:category]).where('title LIKE ?', "%#{params[:query]}%")
+    	end
   	end
     @category = 'Danh sách tìm kiếm'
     render 'list_books'
